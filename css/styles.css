@@ -1,0 +1,56 @@
+html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+}
+
+.intro {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.intro__media::before {
+    content: '';
+    position: static; /*не взаимодействует с другими элементами*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+}
+
+.intro__media {
+    position: absolute; /*закрепить фон*/
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #f9a5a3 url(../img/fon.png) no-repeat center center;
+    background-size: cover;
+}
+
+.intro__media-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%)
+}
+
+/*.element {
+    position: absolute;
+    top: 15%;
+    right: 300px;
+    width: 600px;
+    height: 700px;
+    border-radius: 25px;
+    background-color: #fff;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+}*/

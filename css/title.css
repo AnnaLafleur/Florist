@@ -1,0 +1,52 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+#text { /*шрифт*/
+  font-family: mv boli;
+  font-weight: 700;
+  font-size: 6em;
+  line-height: 1em;
+  text-align: center;
+  position: relative;
+  transform: translateY(-450%);
+}
+#text:hover {
+  cursor: default;
+}
+#text .wrapper {
+  display: inline-block;
+  position: relative; /*положение букв друг за другом*/
+  height: 110px; /*дальность появления по высоте*/
+  width: 70px; /*дальность появления по ширине*/
+  transition: ease 1.5s all; /*скорость появления*/
+}
+#text .wrapper span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  transition: ease 0.1s all; /*реакция при наведении*/
+}
+#text .wrapper span.letter-2 {
+  color: rgba(180, 86, 77, 0.9); /*цвет сзади*/
+}
+#text .wrapper span.letter-1 {
+  color: rgba(248, 165, 165, 1); /*цвет спереди*/
+  z-index: 1;
+}
+#text .wrapper span.letter-1:hover { /*отступ*/
+  top: -4px;
+  right: -4px;
+}
+#text .wrapper span.letter-1:hover ~ .letter-2 { /*отступ*/
+  top: 4px;
+  right: 4px;
+}
+#text .wrapper span.space {
+  padding: 0;
+  min-width: 30px;
+  display: inline-block;
+}/*# sourceMappingURL=title.css.map */
