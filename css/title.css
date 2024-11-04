@@ -7,13 +7,17 @@ html, body {
 
 #text { /*шрифт*/
   font-family: mv boli;
-  font-weight: 700;
-  font-size: 6em;
+  font-weight: 600;
+  font-size: 10em;
   line-height: 1em;
+  /*-webkit-text-stroke: 10px rgba(72, 72, 66, 1);*/
+  paint-order: stroke fill;
   text-align: center;
   position: relative;
-  transform: translateY(-450%);
+  transform: translateY(-150%);
+  z-index: 5;
 }
+
 #text:hover {
   cursor: default;
 }
@@ -31,19 +35,19 @@ html, body {
   transition: ease 0.1s all; /*реакция при наведении*/
 }
 #text .wrapper span.letter-2 {
-  color: rgba(180, 86, 77, 0.9); /*цвет сзади*/
+  color: rgba(72, 72, 66, 1); /*цвет сзади*/
 }
 #text .wrapper span.letter-1 {
-  color: rgba(248, 165, 165, 1); /*цвет спереди*/
+  color: rgba(185, 198, 178, 1); /*цвет спереди*/
   z-index: 1;
 }
 #text .wrapper span.letter-1:hover { /*отступ*/
-  top: -4px;
-  right: -4px;
+  top: -7px;
+  right: -7px;
 }
 #text .wrapper span.letter-1:hover ~ .letter-2 { /*отступ*/
-  top: 4px;
-  right: 4px;
+  top: 7px;
+  right: 7px;
 }
 #text .wrapper span.space {
   padding: 0;
