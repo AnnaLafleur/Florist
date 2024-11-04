@@ -23,6 +23,12 @@
         <link rel="stylesheet" href="css/title.css">
         <!--подключение файлов css-->
         <body>
+            <div class="preloader">
+              <div class="preloader__row">
+                <div class="preloader__item"></div>
+                <div class="preloader__item"></div>
+              </div>
+            </div>
             <div class="intro">
                 <div class="intro__media">
                     <div class="intro__media-video">
@@ -34,10 +40,164 @@
             <div id="container">
                 <div id="inner"></div>
             </div>
-            <div class="element"></div>
             <div id="text"></div>
             <script src="js/title.js"></script>
             <!--подключение файлов js-->
+            <script>
+              window.onload = function () {
+                document.body.classList.add('loaded');
+              }
+            </script>
+            <script>
+              window.onload = function () {
+                document.body.classList.add('loaded_hiding');
+                window.setTimeout(function () {
+                  document.body.classList.add('loaded');
+                  document.body.classList.remove('loaded_hiding');
+                }, 500);
+              }
+            </script>
+            <!--загрузка-->
+            <script>
+                var images = new Array()
+                images = [
+                    src = "img/animation/title/0001.png",
+                    src = "img/animation/title/0002.png",
+                    src = "img/animation/title/0003.png",
+                    src = "img/animation/title/0004.png",
+                    src = "img/animation/title/0005.png",
+                    src = "img/animation/title/0006.png",
+                    src = "img/animation/title/0007.png",
+                    src = "img/animation/title/0008.png",
+                    src = "img/animation/title/0009.png",
+                    src = "img/animation/title/0010.png",
+                    src = "img/animation/title/0011.png",
+                    src = "img/animation/title/0012.png",
+                    src = "img/animation/title/0013.png",
+                    src = "img/animation/title/0014.png",
+                    src = "img/animation/title/0015.png",
+                    src = "img/animation/title/0016.png",
+                    src = "img/animation/title/0017.png",
+                    src = "img/animation/title/0018.png",
+                    src = "img/animation/title/0019.png",
+                    src = "img/animation/title/0020.png",
+                    src = "img/animation/title/0021.png",
+                    src = "img/animation/title/0022.png",
+                    src = "img/animation/title/0023.png",
+                    src = "img/animation/title/0024.png",
+                    src = "img/animation/title/0025.png",
+                    src = "img/animation/title/0026.png",
+                    src = "img/animation/title/0027.png",
+                    src = "img/animation/title/0028.png",
+                    src = "img/animation/title/0029.png",
+                    src = "img/animation/title/0030.png",
+                    src = "img/animation/title/0031.png",
+                    src = "img/animation/title/0032.png",
+                    src = "img/animation/title/0033.png",
+                    src = "img/animation/title/0034.png",
+                    src = "img/animation/title/0035.png",
+                    src = "img/animation/title/0036.png",
+                    src = "img/animation/title/0037.png",
+                    src = "img/animation/title/0038.png",
+                    src = "img/animation/title/0039.png",
+                    src = "img/animation/title/0040.png",
+                    src = "img/animation/title/0041.png",
+                    src = "img/animation/title/0042.png",
+                    src = "img/animation/title/0043.png",
+                    src = "img/animation/title/0044.png",
+                    src = "img/animation/title/0045.png",
+                    src = "img/animation/title/0046.png",
+                    src = "img/animation/title/0047.png",
+                    src = "img/animation/title/0048.png",
+                    src = "img/animation/title/0049.png",
+                    src = "img/animation/title/0050.png",
+                    src = "img/animation/title/0051.png",
+                    src = "img/animation/title/0052.png",
+                    src = "img/animation/title/0053.png",
+                    src = "img/animation/title/0054.png",
+                    src = "img/animation/title/0055.png",
+                    src = "img/animation/title/0056.png",
+                    src = "img/animation/title/0057.png",
+                    src = "img/animation/title/0058.png",
+                    src = "img/animation/title/0059.png",
+                    src = "img/animation/title/0060.png",
+                    src = "img/animation/title/0061.png",
+                    src = "img/animation/title/0062.png",
+                    src = "img/animation/title/0063.png",
+                    src = "img/animation/title/0064.png",
+                    src = "img/animation/title/0065.png",
+                    src = "img/animation/title/0066.png",
+                    src = "img/animation/title/0067.png",
+                    src = "img/animation/title/0068.png",
+                    src = "img/animation/title/0069.png",
+                    src = "img/animation/title/0070.png",
+                    src = "img/animation/title/0071.png",
+                    src = "img/animation/title/0072.png",
+                    src = "img/animation/title/0073.png",
+                    src = "img/animation/title/0074.png",
+                    src = "img/animation/title/0075.png",
+                    src = "img/animation/title/0076.png",
+                    src = "img/animation/title/0077.png",
+                    src = "img/animation/title/0078.png",
+                    src = "img/animation/title/0079.png",
+                    src = "img/animation/title/0080.png",
+                    src = "img/animation/title/0081.png",
+                    src = "img/animation/title/0082.png",
+                    src = "img/animation/title/0083.png",
+                    src = "img/animation/title/0084.png",
+                    src = "img/animation/title/0085.png",
+                    src = "img/animation/title/0086.png",
+                    src = "img/animation/title/0087.png",
+                    src = "img/animation/title/0088.png",
+                    src = "img/animation/title/0089.png",
+                    src = "img/animation/title/0090.png",
+                    src = "img/animation/title/0091.png",
+                    src = "img/animation/title/0092.png",
+                    src = "img/animation/title/0093.png",
+                    src = "img/animation/title/0094.png",
+                    src = "img/animation/title/0095.png",
+                    src = "img/animation/title/0096.png",
+                    src = "img/animation/title/0097.png",
+                    src = "img/animation/title/0098.png",
+                    src = "img/animation/title/0099.png",
+                    src = "img/animation/title/0100.png",
+                    src = "img/animation/title/0101.png",
+                    src = "img/animation/title/0102.png",
+                    src = "img/animation/title/0103.png",
+                    src = "img/animation/title/0104.png",
+                    src = "img/animation/title/0105.png",
+                    src = "img/animation/title/0106.png",
+                    src = "img/animation/title/0107.png",
+                    src = "img/animation/title/0108.png",
+                    src = "img/animation/title/0109.png",
+                    src = "img/animation/title/0110.png",
+                    src = "img/animation/title/0111.png",
+                    src = "img/animation/title/0112.png",
+                    src = "img/animation/title/0113.png",
+                    src = "img/animation/title/0114.png",
+                    src = "img/animation/title/0115.png",
+                    src = "img/animation/title/0116.png",
+                    src = "img/animation/title/0117.png",
+                    src = "img/animation/title/0118.png",
+                    src = "img/animation/title/0119.png",
+                    src = "img/animation/title/0120.png"
+                ];
+
+                setInterval("Animate()", 60);
+                var x = 0;
+
+                function Animate() {
+                    document.getElementById("img").src = images[x]
+                    x++;
+                    if (images.length == x) {
+                        x = 0;
+                    }
+                }
+            </script>
+            <!--покадровая анимация-->
+            <div class="center">
+                <img id="img" src = "img/animation/title/0001.png">
+            </div>
         </body>
     </head>
 </html>
