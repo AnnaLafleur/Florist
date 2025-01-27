@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css?family=Mukta:700');
+* {
+  box-sizing: border-box;
+}
+*::before, *::after {
+  box-sizing: border-box;
+}
+#container-1{
+  font-family: Courier New;
+  font-size: 2rem;
+  line-height: 1.5;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  min-height: 100vh;
+}
+button {
+  position: absolute;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+button.learn-more-1 {
+  width: 24rem; /*длина фона после*/
+  height: auto;
+  top: 131%;
+  left: 38%;
+  z-index: 7;
+}
+button.learn-more-2 {
+  width: 35rem; /*длина фона после*/
+  height: auto;
+  top: 277%;
+  left: 34%;
+  z-index: 7;
+}
+button.learn-more-1 .circle, .learn-more-2 .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem; /*длина фона до*/
+  height: 3.5rem; /*ширина фона*/
+  background: #fff; /*цвет фона*/
+  border-radius: 1.625rem;
+}
+button.learn-more-1 .circle .icon, .learn-more-2 .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+}
+button.learn-more-1 .circle .icon.arrow, .learn-more-2 .circle .icon.arrow {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+button.learn-more-1 .circle .icon.arrow::before, .learn-more-2 .circle .icon.arrow::before {
+  position: absolute;
+  content: '';
+  top: -0.25rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid #fd8262; /*цвет стрелки*/
+  border-right: 0.125rem solid #fd8262; /*цвет стрелки*/
+  transform: rotate(45deg);
+}
+button.learn-more-1 .button-text, .learn-more-2 .button-text{
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 1.85rem;
+  color: #fff; /*цвет текста до*/
+  line-height: 1;
+
+  font-weight: 500;
+  font-size: 37px;
+  text-align: center;
+}
+button:hover .circle {
+  width: 100%;
+}
+button:hover .circle .icon.arrow {
+  background: #fd8262; /*цвет стрекли*/
+  transform: translate(1rem, 0);
+}
+button:hover .button-text {
+  color: #fd8262; /*цвет текста после*/
+}
+@supports (display: grid) {
+  body {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 0.625rem;
+    grid-template-areas: ". main main ." ". main main .";
+  }
+  #container-1 {
+    grid-area: main;
+    align-self: center;
+    justify-self: center;
+  }
+}
