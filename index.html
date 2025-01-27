@@ -1,0 +1,395 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charSet="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+        <!--обновление стандартов-->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <!--ширина, масштаб, без сжатия-->
+        <meta name="generator" content="Gatsby 5.13.1"/>
+        <meta data-react-helmet="true" content="IE=edge" http-equiv="X-UA-Compatible"/>
+        <meta data-react-helmet="true" content="Сайт предоставляет возможность любым желающим составлять букеты цветов" name="description"/>
+        <!--краткое описание страницы-->
+        <meta data-react-helmet="true" content="Florist" property="og:title"/>
+        <!--название сайта-->
+        <meta data-react-helmet="true" content="ru_RU" property="og:locale"/>
+        <!--язык-->
+        <meta data-react-helmet="true" charSet="utf-8"/>
+        <meta data-react-helmet="true" content="website" property="og:type"/>
+        <!--тип страницы вебсайт-->
+        <meta data-react-helmet="true" content="img/logo.png" property="og:image"/>
+        <!--лого сайта-->
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/title.css">
+        <link rel="stylesheet" href="css/main-container.css">
+        <link rel="stylesheet" href="css/main-button.css">
+        <!--подключение файлов css-->
+        <body>
+            <div class="preloader">
+              <div class="preloader__row">
+                <div class="preloader__item"></div>
+                <div class="preloader__item"></div>
+              </div>
+            </div>
+            <div class="intro">
+                <div class="intro__media">
+                    <div class="intro__media-video">
+                        <!--<video src="img/fon.mp4" autoplay muted loop></video>-->
+                    </div>
+                </div>
+            </div>
+            <div id="container">
+                <div id="inner"></div>
+            </div>
+            <div id="text"></div>
+            <script src="js/title.js"></script>
+            <!--подключение файлов js-->
+            <script>
+              window.onload = function () {
+                document.body.classList.add('loaded');
+              }
+            </script>
+            <script>
+              window.onload = function () {
+                document.body.classList.add('loaded_hiding');
+                window.setTimeout(function () {
+                  document.body.classList.add('loaded');
+                  document.body.classList.remove('loaded_hiding');
+                }, 500);
+              }
+            </script>
+            <!--загрузка-->
+            <script>
+                var images = new Array()
+                images1 = [
+                    src = "img/animation/rose/0001.png",
+                    src = "img/animation/rose/0002.png",
+                    src = "img/animation/rose/0003.png",
+                    src = "img/animation/rose/0004.png",
+                    src = "img/animation/rose/0005.png",
+                    src = "img/animation/rose/0006.png",
+                    src = "img/animation/rose/0007.png",
+                    src = "img/animation/rose/0008.png",
+                    src = "img/animation/rose/0009.png",
+                    src = "img/animation/rose/0010.png",
+                    src = "img/animation/rose/0011.png",
+                    src = "img/animation/rose/0012.png",
+                    src = "img/animation/rose/0013.png",
+                    src = "img/animation/rose/0014.png",
+                    src = "img/animation/rose/0015.png",
+                    src = "img/animation/rose/0016.png",
+                    src = "img/animation/rose/0017.png",
+                    src = "img/animation/rose/0018.png",
+                    src = "img/animation/rose/0019.png",
+                    src = "img/animation/rose/0020.png",
+                    src = "img/animation/rose/0021.png",
+                    src = "img/animation/rose/0022.png",
+                    src = "img/animation/rose/0023.png",
+                    src = "img/animation/rose/0024.png",
+                    src = "img/animation/rose/0025.png",
+                    src = "img/animation/rose/0026.png",
+                    src = "img/animation/rose/0027.png",
+                    src = "img/animation/rose/0028.png",
+                    src = "img/animation/rose/0029.png",
+                    src = "img/animation/rose/0030.png",
+                    src = "img/animation/rose/0031.png",
+                    src = "img/animation/rose/0032.png",
+                    src = "img/animation/rose/0033.png",
+                    src = "img/animation/rose/0034.png",
+                    src = "img/animation/rose/0035.png",
+                    src = "img/animation/rose/0036.png",
+                    src = "img/animation/rose/0037.png",
+                    src = "img/animation/rose/0038.png",
+                    src = "img/animation/rose/0039.png",
+                    src = "img/animation/rose/0040.png",
+                    src = "img/animation/rose/0041.png",
+                    src = "img/animation/rose/0042.png",
+                    src = "img/animation/rose/0043.png",
+                    src = "img/animation/rose/0044.png",
+                    src = "img/animation/rose/0045.png",
+                    src = "img/animation/rose/0046.png",
+                    src = "img/animation/rose/0047.png",
+                    src = "img/animation/rose/0048.png",
+                    src = "img/animation/rose/0049.png",
+                    src = "img/animation/rose/0050.png",
+                    src = "img/animation/rose/0051.png",
+                    src = "img/animation/rose/0052.png",
+                    src = "img/animation/rose/0053.png",
+                    src = "img/animation/rose/0054.png",
+                    src = "img/animation/rose/0055.png",
+                    src = "img/animation/rose/0056.png",
+                    src = "img/animation/rose/0057.png",
+                    src = "img/animation/rose/0058.png",
+                    src = "img/animation/rose/0059.png",
+                    src = "img/animation/rose/0060.png",
+                    src = "img/animation/rose/0061.png",
+                    src = "img/animation/rose/0062.png",
+                    src = "img/animation/rose/0063.png",
+                    src = "img/animation/rose/0064.png",
+                    src = "img/animation/rose/0065.png",
+                    src = "img/animation/rose/0066.png",
+                    src = "img/animation/rose/0067.png",
+                    src = "img/animation/rose/0068.png",
+                    src = "img/animation/rose/0069.png",
+                    src = "img/animation/rose/0070.png",
+                    src = "img/animation/rose/0071.png",
+                    src = "img/animation/rose/0072.png",
+                    src = "img/animation/rose/0073.png",
+                    src = "img/animation/rose/0074.png",
+                    src = "img/animation/rose/0075.png",
+                    src = "img/animation/rose/0076.png",
+                    src = "img/animation/rose/0077.png",
+                    src = "img/animation/rose/0078.png",
+                    src = "img/animation/rose/0079.png",
+                    src = "img/animation/rose/0080.png",
+                    src = "img/animation/rose/0081.png",
+                    src = "img/animation/rose/0082.png",
+                    src = "img/animation/rose/0083.png",
+                    src = "img/animation/rose/0084.png",
+                    src = "img/animation/rose/0085.png",
+                    src = "img/animation/rose/0086.png",
+                    src = "img/animation/rose/0087.png",
+                    src = "img/animation/rose/0088.png",
+                    src = "img/animation/rose/0089.png",
+                    src = "img/animation/rose/0090.png",
+                    src = "img/animation/rose/0091.png",
+                    src = "img/animation/rose/0092.png",
+                    src = "img/animation/rose/0093.png",
+                    src = "img/animation/rose/0094.png",
+                    src = "img/animation/rose/0095.png",
+                    src = "img/animation/rose/0096.png",
+                    src = "img/animation/rose/0097.png",
+                    src = "img/animation/rose/0098.png",
+                    src = "img/animation/rose/0099.png",
+                    src = "img/animation/rose/0100.png",
+                    src = "img/animation/rose/0101.png",
+                    src = "img/animation/rose/0102.png",
+                    src = "img/animation/rose/0103.png",
+                    src = "img/animation/rose/0104.png",
+                    src = "img/animation/rose/0105.png",
+                    src = "img/animation/rose/0106.png",
+                    src = "img/animation/rose/0107.png",
+                    src = "img/animation/rose/0108.png",
+                    src = "img/animation/rose/0109.png",
+                    src = "img/animation/rose/0110.png",
+                    src = "img/animation/rose/0111.png",
+                    src = "img/animation/rose/0112.png",
+                    src = "img/animation/rose/0113.png",
+                    src = "img/animation/rose/0114.png",
+                    src = "img/animation/rose/0115.png",
+                    src = "img/animation/rose/0116.png",
+                    src = "img/animation/rose/0117.png",
+                    src = "img/animation/rose/0118.png",
+                    src = "img/animation/rose/0119.png",
+                    src = "img/animation/rose/0120.png"
+                ];
+
+                setInterval("Animate1()", 60);
+                var x1 = 0;
+
+                function Animate1() {
+                    document.getElementById("img1").src = images1[x1]
+                    x1++;
+                    if (images1.length == x1) {
+                        x1 = 0;
+                    }
+                }
+            </script>
+            <script>
+                var images = new Array()
+                images2 = [
+                    src = "img/animation/book/0001.png",
+                    src = "img/animation/book/0002.png",
+                    src = "img/animation/book/0003.png",
+                    src = "img/animation/book/0004.png",
+                    src = "img/animation/book/0005.png",
+                    src = "img/animation/book/0006.png",
+                    src = "img/animation/book/0007.png",
+                    src = "img/animation/book/0008.png",
+                    src = "img/animation/book/0009.png",
+                    src = "img/animation/book/0010.png",
+                    src = "img/animation/book/0011.png",
+                    src = "img/animation/book/0012.png",
+                    src = "img/animation/book/0013.png",
+                    src = "img/animation/book/0014.png",
+                    src = "img/animation/book/0015.png",
+                    src = "img/animation/book/0016.png",
+                    src = "img/animation/book/0017.png",
+                    src = "img/animation/book/0018.png",
+                    src = "img/animation/book/0019.png",
+                    src = "img/animation/book/0020.png",
+                    src = "img/animation/book/0021.png",
+                    src = "img/animation/book/0022.png",
+                    src = "img/animation/book/0023.png",
+                    src = "img/animation/book/0024.png",
+                    src = "img/animation/book/0025.png",
+                    src = "img/animation/book/0026.png",
+                    src = "img/animation/book/0027.png",
+                    src = "img/animation/book/0028.png",
+                    src = "img/animation/book/0029.png",
+                    src = "img/animation/book/0030.png",
+                    src = "img/animation/book/0031.png",
+                    src = "img/animation/book/0032.png",
+                    src = "img/animation/book/0033.png",
+                    src = "img/animation/book/0034.png",
+                    src = "img/animation/book/0035.png",
+                    src = "img/animation/book/0036.png",
+                    src = "img/animation/book/0037.png",
+                    src = "img/animation/book/0038.png",
+                    src = "img/animation/book/0039.png",
+                    src = "img/animation/book/0040.png",
+                    src = "img/animation/book/0041.png",
+                    src = "img/animation/book/0042.png",
+                    src = "img/animation/book/0043.png",
+                    src = "img/animation/book/0044.png",
+                    src = "img/animation/book/0045.png",
+                    src = "img/animation/book/0046.png",
+                    src = "img/animation/book/0047.png",
+                    src = "img/animation/book/0048.png",
+                    src = "img/animation/book/0049.png",
+                    src = "img/animation/book/0050.png",
+                    src = "img/animation/book/0051.png",
+                    src = "img/animation/book/0052.png",
+                    src = "img/animation/book/0053.png",
+                    src = "img/animation/book/0054.png",
+                    src = "img/animation/book/0055.png",
+                    src = "img/animation/book/0056.png",
+                    src = "img/animation/book/0057.png",
+                    src = "img/animation/book/0058.png",
+                    src = "img/animation/book/0059.png",
+                    src = "img/animation/book/0060.png",
+                    src = "img/animation/book/0061.png",
+                    src = "img/animation/book/0062.png",
+                    src = "img/animation/book/0063.png",
+                    src = "img/animation/book/0064.png",
+                    src = "img/animation/book/0065.png",
+                    src = "img/animation/book/0066.png",
+                    src = "img/animation/book/0067.png",
+                    src = "img/animation/book/0068.png",
+                    src = "img/animation/book/0069.png",
+                    src = "img/animation/book/0070.png",
+                    src = "img/animation/book/0071.png",
+                    src = "img/animation/book/0072.png",
+                    src = "img/animation/book/0073.png",
+                    src = "img/animation/book/0074.png",
+                    src = "img/animation/book/0075.png",
+                    src = "img/animation/book/0076.png",
+                    src = "img/animation/book/0077.png",
+                    src = "img/animation/book/0078.png",
+                    src = "img/animation/book/0079.png",
+                    src = "img/animation/book/0080.png",
+                    src = "img/animation/book/0081.png",
+                    src = "img/animation/book/0082.png",
+                    src = "img/animation/book/0083.png",
+                    src = "img/animation/book/0084.png",
+                    src = "img/animation/book/0085.png",
+                    src = "img/animation/book/0086.png",
+                    src = "img/animation/book/0087.png",
+                    src = "img/animation/book/0088.png",
+                    src = "img/animation/book/0089.png",
+                    src = "img/animation/book/0090.png",
+                    src = "img/animation/book/0091.png",
+                    src = "img/animation/book/0092.png",
+                    src = "img/animation/book/0093.png",
+                    src = "img/animation/book/0094.png",
+                    src = "img/animation/book/0095.png",
+                    src = "img/animation/book/0096.png",
+                    src = "img/animation/book/0097.png",
+                    src = "img/animation/book/0098.png",
+                    src = "img/animation/book/0099.png",
+                    src = "img/animation/book/0100.png",
+                    src = "img/animation/book/0101.png",
+                    src = "img/animation/book/0102.png",
+                    src = "img/animation/book/0103.png",
+                    src = "img/animation/book/0104.png",
+                    src = "img/animation/book/0105.png",
+                    src = "img/animation/book/0106.png",
+                    src = "img/animation/book/0107.png",
+                    src = "img/animation/book/0108.png",
+                    src = "img/animation/book/0109.png",
+                    src = "img/animation/book/0110.png",
+                    src = "img/animation/book/0111.png",
+                    src = "img/animation/book/0112.png",
+                    src = "img/animation/book/0113.png",
+                    src = "img/animation/book/0114.png",
+                    src = "img/animation/book/0115.png",
+                    src = "img/animation/book/0116.png",
+                    src = "img/animation/book/0117.png",
+                    src = "img/animation/book/0118.png",
+                    src = "img/animation/book/0119.png",
+                    src = "img/animation/book/0120.png",
+                    src = "img/animation/book/0121.png",
+                    src = "img/animation/book/0122.png",
+                    src = "img/animation/book/0123.png",
+                    src = "img/animation/book/0124.png",
+                    src = "img/animation/book/0125.png",
+                    src = "img/animation/book/0126.png",
+                    src = "img/animation/book/0127.png",
+                    src = "img/animation/book/0128.png",
+                    src = "img/animation/book/0129.png",
+                    src = "img/animation/book/0130.png",
+                    src = "img/animation/book/0131.png",
+                    src = "img/animation/book/0132.png",
+                    src = "img/animation/book/0133.png",
+                    src = "img/animation/book/0134.png",
+                    src = "img/animation/book/0135.png",
+                    src = "img/animation/book/0136.png",
+                    src = "img/animation/book/0137.png",
+                    src = "img/animation/book/0138.png",
+                    src = "img/animation/book/0139.png",
+                    src = "img/animation/book/0140.png",
+                    src = "img/animation/book/0141.png",
+                    src = "img/animation/book/0142.png",
+                    src = "img/animation/book/0143.png",
+                    src = "img/animation/book/0144.png",
+                    src = "img/animation/book/0145.png",
+                    src = "img/animation/book/0146.png",
+                    src = "img/animation/book/0147.png",
+                    src = "img/animation/book/0148.png",
+                    src = "img/animation/book/0149.png",
+                    src = "img/animation/book/0150.png"
+                ];
+
+                setInterval("Animate2()", 80);
+                var x2 = 0;
+
+                function Animate2() {
+                    document.getElementById("img2").src = images2[x2]
+                    x2++;
+                    if (images2.length == x2) {
+                        x2 = 0;
+                    }
+                }
+            </script>
+            <!--покадровая анимация-->
+            <div id="container-1">
+              <button class="learn-more-1">
+                <span class="circle" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span class="button-text">Создать букет</span>
+              </button>
+            </div>
+            <div id="container-1">
+              <button class="learn-more-2">
+                <span class="circle" aria-hidden="true">
+                  <span class="icon arrow"></span>
+                </span>
+                <span class="button-text">Перейти к справочнику</span>
+              </button>
+            </div>
+            <div class="center-1">
+                <img id="img1" src = "img/animation/rose/0001.png">
+            </div>
+            <div class="center-2">
+                <img id="img2" src = "img/animation/book/0001.png">
+            </div>
+            <div class="data-container-1">
+                <span class="btn"><p>Вы можете составить букет цветов<p>в специальном редакторе:</span>
+            </div>
+            <div class="data-container-2">
+                <span class="btn"><p>В справочнике представлены цветы,<p> которые чаще всего используют<p>во флористике. Вы можете<p>ознакомиться с ними подробнее:</span>
+            </div>
+        </body>
+    </head>
+</html>
