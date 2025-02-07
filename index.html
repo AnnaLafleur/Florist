@@ -1,0 +1,158 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charSet="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+        <!-- Обновление стандартов -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+        <!-- Ширина, масштаб, без сжатия -->
+        <meta name="generator" content="Gatsby 5.13.1"/>
+        <meta data-react-helmet="true" content="IE=edge" http-equiv="X-UA-Compatible"/>
+        <meta data-react-helmet="true" content="Сайт предоставляет возможность любым желающим составлять букеты цветов" name="description"/>
+        <!-- Краткое описание страницы -->
+        <meta data-react-helmet="true" content="Florist" property="og:title"/>
+        <!-- Название сайта -->
+        <meta data-react-helmet="true" content="ru_RU" property="og:locale"/>
+        <!-- Язык -->
+        <meta data-react-helmet="true" charSet="utf-8"/>
+        <meta data-react-helmet="true" content="website" property="og:type"/>
+        <!-- Тип страницы вебсайт -->
+        <title>Florist</title>
+        <!-- Отображение названия во вкладке браузера -->
+        <link rel="icon" type="image/svg+xml" href="img/logo.svg">
+        <link rel="icon" type="image/png" href="img/logo.png">
+        <link rel="icon" type="image/x-icon" href="img/logo.ico">
+        <link rel="apple-touch-icon" sizes="242x242" href="img/logo.png">
+        <!-- Лого сайта -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Diphylleia&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/menu.css">
+        <link rel="stylesheet" href="css/title.css">
+        <link rel="stylesheet" href="css/main-container.css">
+        <link rel="stylesheet" href="css/main-button.css">
+        <!-- Подключение файлов css -->
+    </head>
+        <body>
+            <div class="preloader">
+               <div class="preloader__row">
+                   <div class="preloader__item"></div>
+                   <div class="preloader__item"></div>
+               </div>
+            </div>
+            <nav class="nav">
+                <input type="checkbox" class="nav__cb" id="menu-cb"/>
+                <div class="nav__content">
+                    <ul class="nav__items">
+                        <li class="nav__item">
+                            <span class="nav__item-text">
+                                Мой букет
+                            </span>
+                            <div class="nav__item-spacer"></div>
+                        </li>
+                        <li class="nav__item">
+                            <span class="nav__item-text">
+                                Каталог
+                            </span>
+                            <div class="nav__item-spacer"></div>
+                        </li>
+                    </ul>
+                </div>
+                <label class="nav__btn" for="menu-cb"></label>
+            </nav>
+            <img class="image" src="img/logo.svg">
+            <div class="rose">
+                <img id="img1" src="img/animation/rose/0001.png">
+                <div class="data-container-1">
+                    <div id="text"></div>
+                    <span class="btn">
+                        <p>Вы можете составить букет цветов в специальном редакторе:</p>
+                        <button class="learn-more-1">
+                            <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">Создать букет</span>
+                        </button>
+                    </span>
+                    <div class="book">
+                        <img id="img2" src="img/animation/book/0001.png">
+                        <div class="data-container-2">
+                            <span class="btn">
+                                <p>В справочнике представлены цветы, которые чаще всего используют во флористике. Вы можете ознакомиться с ними подробнее:</p>
+                                <button class="learn-more-2">
+                                    <span class="circle" aria-hidden="true">
+                                        <span class="icon arrow"></span>
+                                    </span>
+                                    <span class="button-text">Перейти к справочнику</span>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="js/title.js"></script>
+            <!-- Подключение файлов js -->
+            <script>
+              window.onload = function () {
+                document.body.classList.add('loaded');
+              }
+            </script>
+            <script>
+              window.onload = function () {
+                document.body.classList.add('loaded_hiding');
+                window.setTimeout(function () {
+                  document.body.classList.add('loaded');
+                  document.body.classList.remove('loaded_hiding');
+                }, 500);
+              }
+            </script>
+            <!-- Загрузка -->
+            <script>
+            var images = new Array();
+            var images1 = [];
+
+            // Генерация массива с 120 кадрами
+            for (var i = 1; i <= 120; i++) {
+                var frameNumber = String(i).padStart(4, '0'); // Форматируем номер кадра (0001, 0002, ..., 0120)
+                var src = "img/animation/rose/" + frameNumber + ".png";
+                images1.push(src);
+            }
+
+            setInterval(Animate1, 60);
+            var x1 = 0;
+
+            function Animate1() {
+                document.getElementById("img1").src = images1[x1];
+                x1++;
+                if (images1.length == x1) {
+                    x1 = 0;
+                }
+            }
+            </script>
+            <!-- Покадровая анимация rose -->
+            <script>
+            var images = new Array();
+            var images2 = [];
+
+            // Генерация массива с 150 кадрами
+            for (var i = 1; i <= 150; i++) {
+                var frameNumber = String(i).padStart(4, '0'); // Форматируем номер кадра (0001, 0002, ..., 0150)
+                var src = "img/animation/book/" + frameNumber + ".png";
+                images2.push(src);
+            }
+
+            setInterval(Animate2, 80);
+            var x2 = 0;
+
+            function Animate2() {
+                document.getElementById("img2").src = images2[x2];
+                x2++;
+                if (images2.length == x2) {
+                    x2 = 0;
+                }
+            }
+            </script>
+            <!-- Покадровая анимация book -->
+        </body>
+</html>
