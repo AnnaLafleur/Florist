@@ -1,0 +1,61 @@
+html {
+    background: #ffa089;
+}
+
+a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: inherit; /* Наследует цвет родителя */
+    cursor: pointer; /* Курсор-указатель при наведении */
+}
+
+.image {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    height: auto;
+    width: 90px;
+    z-index: 1000;
+}
+
+/* Основные стили контейнера */
+.directory-container {
+    margin: 0 220px;
+    padding: 2rem 0;
+}
+
+/* Адаптивная таблица */
+.directory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Ячейки равномерно заполняют пространство */
+    gap: 1.5rem;
+    margin: 0 auto;
+}
+
+/* Изображение в ячейке */
+.directory-item img {
+    position: relative;
+    padding-top: 20px;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+    pointer-events: auto;
+    z-index: 1000;
+}
+
+/* Подпись под изображением */
+.directory-item .item-caption {
+    font-family: Courier New, sans-serif;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 500;
+    z-index: 1;
+}
+
+.btn {
+    padding: 1% 0 35% 0;
+}

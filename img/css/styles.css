@@ -1,0 +1,78 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+html {
+    background: #ffa089;
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+    }
+
+body {
+    display: flex;
+    justify-content: center; /* Горизонтальное центрирование */
+    align-items: center; /* Вертикальное центрирование */
+    overflow-x: hidden; /* Убираем горизонтальную прокрутку */
+}
+
+p {
+    font-family: Courier New, sans-serif;
+    color: white;
+    font-size: 27px;
+    line-height: 1.5;
+    margin-top: 7px;
+    margin-bottom: 10px;
+}
+
+a {
+    text-decoration: none; /* Убираем подчеркивание */
+    color: inherit; /* Наследует цвет родителя */
+    cursor: pointer; /* Курсор-указатель при наведении */
+}
+
+.image {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    height: auto;
+    width: 90px;
+    z-index: 1000;
+}
+
+.rose {
+    position: relative;
+    top: -11%;
+    width: 68vw;
+    min-width: 800px;
+    aspect-ratio: 16 / 9; /* Сохраняем пропорции */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 16vw;
+    margin-right: 16vw;
+    z-index: 4;
+}
+
+.book {
+    position: absolute;
+    box-sizing: border-box;
+    padding-top: 5%;
+    top: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 4;
+}
+
+#img1, #img2 {
+    max-width: 100%; /* Изображения не выходят за пределы контейнера */
+    height: auto; /* Сохраняем пропорции */
+}
