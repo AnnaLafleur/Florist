@@ -1,0 +1,261 @@
+html {
+    background: #ffa089;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+.image {
+    position: fixed;
+    top: 30px;
+    left: 30px;
+    height: auto;
+    width: 90px;
+    z-index: 1000;
+}
+
+/* Основные стили контейнера */
+.directory-container {
+    margin: 0 220px;
+    padding: 2rem 0;
+}
+
+/* Фиксированная таблица */
+.directory-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 250px);
+    gap: 1.5rem;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+/* Изображение в ячейке */
+.directory-item img {
+    position: relative;
+    padding-top: 20px;
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    transition: transform 0.3s ease;
+    pointer-events: auto;
+    z-index: 1000;
+}
+
+/* Подпись под изображением */
+.directory-item .item-caption {
+    font-family: Courier New, sans-serif;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    z-index: 1;
+}
+
+.btn {
+    padding: 1% 0 35% 0;
+}
+
+/* Стили для позиционирования кнопки внутри ячейки */
+.directory-item {
+    position: relative;
+    min-height: 280px;
+    max-height: 335px;
+}
+
+.item-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    align-items: center;
+}
+
+/* Кнопка "Подробнее" */
+.directory-item button.learn-more-1 {
+    width: 80%;
+    margin: 1rem auto 0;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.directory-item .button-text {
+    font-family: Courier New, monospace;
+    font-size: 23px;
+    letter-spacing: 0.5px;
+}
+
+.directory-item .button-text {
+    transform: translate(5px, 3px);
+    padding-top: 3px;
+}
+
+/* Модальное окно */
+.modal-overlay {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    font-family: 'Courier New', monospace;
+    z-index: 10000;
+}
+
+.modal-container {
+    position: relative;
+    width: 70vw;
+    max-width: 900px;
+    height: 70vh; /* Используем vh вместо фиксированной высоты */
+    min-height: 400px;
+    max-height: 600px;
+    background: #fd8262;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    margin: auto; /* Центрирование */
+}
+
+/* Кнопка закрытия */
+.modal-close {
+    position: absolute;
+    left: 97%;
+    top: 0;
+    font-size: 2.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    line-height: 1;
+    padding: 10px 5px;
+    margin: 0;
+    transform: translateX(-100%);
+}
+
+/* Левая колонка */
+.modal-content {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.modal-left-column {
+    flex: 7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+/* Контейнер для фото */
+.modal-image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Фото */
+.modal-image {
+    max-width: 95%;
+    max-height: 95%;
+    object-fit: contain;
+}
+
+/* Правая колонка */
+.modal-text-container {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    height: 100%;
+}
+
+/* Текстовые стили */
+.info-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-left: 20px;
+}
+
+.modal-title {
+    font-size: 2.2rem;
+    margin: 0 0 20px 0;
+    color: white;
+    flex-shrink: 0;
+}
+
+.modal-description {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: white;
+    flex-grow: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
+    padding-right: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: #ffa089 transparent;
+}
+
+/* Стилизация полосы прокрутки */
+.modal-overlay {
+    scrollbar-color: #ffa089 transparent;
+}
+
+/* Кнопка смена цвета */
+.modal-text-container .icon-container {
+    display: flex;
+    gap: 10px;
+    flex-shrink: 0;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.modal-text-container .icon-container .modal-icon {
+    cursor: pointer;
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.modal-text-container .icon-container .modal-icon::before,
+.modal-text-container .icon-container .modal-icon::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transition: all 0.25s ease;
+    border-radius: 30px;
+}
+
+.modal-text-container .icon-container .modal-icon i {
+    position: relative;
+    color: #FFFFFF;
+    font-size: 30px;
+    margin-top: 15px;
+    transition: all 0.25s ease;
+    z-index: 1;
+}
+
+.directory-item img.animating {
+    pointer-events: none;
+    opacity: 0.7;
+}
