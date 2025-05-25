@@ -7,7 +7,7 @@ class FlowerAnimation {
         this.elementId = elementId;
         this.color = 'white';
         this.sprite = `img/animation/${flowerName}/${this.color}.png`;
-        this.firstFrame = `img/animation/${flowerName}/${this.color}/0001.png`;
+        this.firstFrame = `img/animation/${flowerName}/0001.png`;
         this.img = document.getElementById(elementId);
         this.isPlaying = false;
         this.canvas = null;
