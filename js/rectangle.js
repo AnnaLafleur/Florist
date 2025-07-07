@@ -983,7 +983,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const centerY = viewBoxHeight / 2;
             contentGroup.setAttribute("transform", `translate(${centerX},${centerY}) scale(${scaleFactor}) translate(${-centerX},${-centerY})`);
         } else if (n === 3) {
-            contentGroup.setAttribute("transform", `translate(0, 200)`);
+            contentGroup.setAttribute("transform", `translate(0, 180)`);
         } else if (n === 15) {
             contentGroup.setAttribute("transform", `translate(0, 100)`);
         }
