@@ -938,7 +938,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const centerY = (innerCircle.c.y + h / 2) * zoom + margin;
             borderCircle.setAttribute("cx", centerX.toString());
             borderCircle.setAttribute("cy", centerY.toString());
-            borderCircle.setAttribute("r", (unitRadius * 0.35 * zoom).toString());
+            borderCircle.setAttribute("r", (unitRadius * 0.33 * zoom).toString());
         } else {
             borderCircle.setAttribute("cx", (border.cx * zoom + margin).toString());
             borderCircle.setAttribute("cy", (border.cy * zoom + margin).toString());
