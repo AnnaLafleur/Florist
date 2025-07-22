@@ -719,3 +719,7 @@ body.step-1-active {
 body.step-2-active {
     overflow: hidden;
 }
+
+.step-2 .right-section .directory-item .item-content-checkbox {
+    display: none;
+}
