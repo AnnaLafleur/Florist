@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charSet="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Florist</title>
+        <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/logo.svg">
+        <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/logo.png">
+        <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/logo.ico">
+        <link rel="apple-touch-icon" sizes="242x242" href="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/logo.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Akaya+Kanadaka&family=Diphylleia&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/menu.css">
+        <link rel="stylesheet" href="css/title.css">
+        <link rel="stylesheet" href="css/main-container.css">
+        <link rel="stylesheet" href="css/main-button.css">
+        <link rel="stylesheet" href="css/preloader.css">
+        <link rel="stylesheet" href="css/transition.css">
+        <link rel="stylesheet" href="css/mobile.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="top-layer"></div>
+            <div class="top-layer top-layer--2"></div>
+            <div class="top-layer top-layer--3"></div>
+        </div>
+        <!-- SVG Background -->
+        <svg preserveAspectRatio="xMidYMid slice" viewBox="10 10 80 80">
+            <defs>
+                <style>
+                    @keyframes rotate {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+                        100% {
+                            transform: rotate(360deg);
+                        }
+                    }
+                    .out-top {
+                        animation: rotate 40s linear infinite; /* Slowed from 20s to 40s */
+                        transform-origin: 13px 25px;
+                    }
+                    .in-top {
+                        animation: rotate 20s linear infinite; /* Slowed from 10s to 20s */
+                        transform-origin: 13px 25px;
+                    }
+                    .out-bottom {
+                        animation: rotate 50s linear infinite; /* Slowed from 25s to 50s */
+                        transform-origin: 84px 93px;
+                    }
+                    .in-bottom {
+                        animation: rotate 30s linear infinite; /* Slowed from 15s to 30s */
+                        transform-origin: 84px 93px;
+                    }
+                </style>
+            </defs>
+            <path fill="#ffb3a0" class="out-top" d="M37-5C25.1-14.7,5.7-19.1-9.2-10-28.5,1.8-32.7,31.1-19.8,49c15.5,21.5,52.6,22,67.2,2.3C59.4,35,53.7,8.5,37-5Z"/>
+            <path fill="#ffa089" class="in-top" d="M20.6,4.1C11.6,1.5-1.9,2.5-8,11.2-16.3,23.1-8.2,45.6,7.4,50S42.1,38.9,41,24.5C40.2,14.1,29.4,6.6,20.6,4.1Z"/>
+            <path fill="#ffd9ce" class="out-bottom" d="M105.9,48.6c-12.4-8.2-29.3-4.8-39.4.8-23.4,12.8-37.7,51.9-19.1,74.1s63.9,15.3,76-5.6c7.6-13.3,1.8-31.1-2.3-43.8C117.6,63.3,114.7,54.3,105.9,48.6Z"/>
+            <path fill="#ffece7" class="in-bottom" d="M102,67.1c-9.6-6.1-22-3.1-29.5,2-15.4,10.7-19.6,37.5-7.6,47.8s35.9,3.9,44.5-12.5C115.5,92.6,113.9,74.6,102,67.1Z"/>
+        </svg>
+            <div class="preloader">
+               <div class="preloader__row">
+                   <div class="preloader__item"></div>
+                   <div class="preloader__item"></div>
+               </div>
+            </div>
+            <nav class="nav">
+                <input type="checkbox" class="nav__cb" id="menu-cb"/>
+                <div class="nav__content">
+                    <ul class="nav__items">
+                        <li class="nav__item">
+                            <span class="nav__item-text"><a href="myaccount.html">Мой аккаунт</a></span>
+                        </li>
+                        <li class="nav__item">
+                            <span class="nav__item-text"><a href="index.html">Главная</a></span>
+                            <div class="nav__item-spacer"></div>
+                        </li>
+                        <li class="nav__item">
+                            <span class="nav__item-text"><a href="creator.html">Создать букет</a></span>
+                        </li>
+                        <li class="nav__item">
+                            <span class="nav__item-text"><a href="directory.html">Каталог</a></span>
+                        </li>
+                        <li class="nav__item">
+                            <span class="nav__item-text">Мои букеты</span>
+                        </li>
+                        <li class="nav__item">
+                            <span class="nav__item-text">Контакты</span>
+                        </li>
+                    </ul>
+                </div>
+                <label class="nav__btn" for="menu-cb"></label>
+            </nav>
+            <a href="index.html"><img class="image" src="img/logo.svg" loading="lazy"></a>
+            <div class="rose">
+                <img id="img1" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/main rose/0001.png" loading="lazy">
+                <div class="data-container-1">
+                    <div id="text"></div>
+                    <span class="btn">
+                        <p>Вы можете составить букет цветов в специальном редакторе:</p>
+                        <button class="learn-more-1">
+                            <a href="creator.html">
+                                <span class="circle" aria-hidden="true">
+                                    <span class="icon arrow"></span>
+                                </span>
+                                <span class="button-text">Создать букет</span>
+                            </a>
+                        </button>
+                    </span>
+                    <div class="book">
+                        <img id="img2" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/book/0001.png" loading="lazy">
+                        <div class="data-container-2">
+                            <span class="btn">
+                                <p>В справочнике представлены цветы, которые чаще всего используют во флористике. Вы можете ознакомиться с ними подробнее:</p>
+                                <button class="learn-more-2">
+                                    <a href="directory.html">
+                                        <span class="circle" aria-hidden="true">
+                                            <span class="icon arrow"></span>
+                                        </span>
+                                        <span class="button-text">Перейти к каталогу</span>
+                                    </a>
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Подключение файлов js -->
+            <script>
+                history.scrollRestoration = 'manual';
+                window.onload = function () {
+                    document.body.classList.add('loaded_hiding');
+                    window.setTimeout(function () {
+                        document.body.classList.add('loaded');
+                        document.body.classList.remove('loaded_hiding');
+                    }, 500);
+                }
+            </script>
+            <!-- Загрузка -->
+            <script>
+            var animations = [
+              {
+                id: "img1",
+                folder: "main rose",
+                frameCount: 120,
+                interval: 60,
+                images: [],
+                loadedImages: 0,
+                currentFrame: 0
+              },
+              {
+                id: "img2",
+                folder: "book",
+                frameCount: 150,
+                interval: 60,
+                images: [],
+                loadedImages: 0,
+                currentFrame: 0
+              }
+            ];
+
+            // Генерация путей к изображениям для всех анимаций
+            animations.forEach(anim => {
+              for (var i = 1; i <= anim.frameCount; i++) {
+                var frameNumber = String(i).padStart(4, '0');
+                var src = `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/${anim.folder}/${frameNumber}.png`;
+                anim.images.push(src);
+              }
+            });
+
+            // Универсальная функция предзагрузки
+            function preloadImages(anim) {
+              anim.images.forEach((src) => {
+                const img = new Image();
+                img.src = src;
+                img.onload = () => {
+                  anim.loadedImages++;
+                  if (anim.loadedImages === anim.images.length) {
+                    console.log(`Все изображения для ${anim.folder} загружены!`);
+                    setInterval(() => animate(anim), anim.interval);
+                  }
+                };
+              });
+            }
+
+            // Универсальная функция анимации
+            function animate(anim) {
+              document.getElementById(anim.id).src = anim.images[anim.currentFrame];
+              anim.currentFrame++;
+              if (anim.currentFrame === anim.images.length) {
+                anim.currentFrame = 0;
+              }
+            }
+
+            // Запуск предзагрузки для всех анимаций
+            animations.forEach(preloadImages);
+            </script>
+            <!-- Покадровая анимация -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+            <script src="js/title.js"></script>
+            <script src="js/transition.js"></script>
+            <script src="js/selection.js"></script>
+        </body>
+</html>
