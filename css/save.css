@@ -1,0 +1,181 @@
+.save-btn-container {
+    position: fixed;
+    bottom: 30px;
+    right: 50px;
+    display: flex;
+    flex-direction: row;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.step-3.active .save-btn-container {
+    opacity: 1;
+    visibility: visible;
+}
+
+.save-btn {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: #ff957a;
+    border-radius: 60px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: width 0.5s;
+    transform-origin: right;
+}
+
+.save-btn:hover {
+    width: 240px;
+    background: #ff957a;
+}
+
+.save-btn .icon {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: transform 0.5s;
+}
+
+.save-btn:hover .icon {
+    transform: translateX(-100%) scale(0);
+}
+
+.save-btn .title {
+    color: #fff;
+    font-family: 'Courier New', sans-serif;
+    font-size: 27px;
+    text-align: center;
+    transform: scale(0);
+    transition: transform 0.5s;
+    white-space: nowrap;
+}
+
+.save-btn:hover .title {
+    transform: scale(1);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.modal-content {
+    position: relative;
+    background: #fd8262;
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 40px 40px 40px 40px;
+    box-sizing: border-box;
+    width: auto;
+    height: auto;
+    max-width: 95vw;
+    max-height: 95vh;
+}
+
+.modal-svg {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #000;
+    z-index: 10;
+}
+
+/* ── правая панель с кнопками ── */
+.modal-btn-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+    flex-shrink: 0;
+    width: 70px;
+}
+
+/* Фиксированная обёртка — не даёт кнопке двигать layout при масштабе */
+.modal-btn-panel .btn-wrap {
+    width: 58px;
+    height: 58px;
+    position: relative;                /* якорь для абсолютного позиционирования внутри */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* Сама кнопка теперь абсолютно позиционирована внутри .btn-wrap */
+.modal-round-btn--save,
+.modal-round-btn--copy {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: none;
+    background: #ffa089;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    box-shadow: none;
+
+    /* Абсолютное позиционирование от центра обёртки */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1);
+    transform-origin: center center;
+
+    transition: transform 0.18s ease;
+}
+
+.modal-round-btn--save:hover,
+.modal-round-btn--copy:hover {
+    transform: translate(-50%, -50%) scale(1.13);
+    background: #ffa089;
+    filter: none;
+}
+
+.modal-round-btn--save:active,
+.modal-round-btn--copy:active {
+    transform: translate(-50%, -50%) scale(0.96);
+    background: #ffa089;
+    filter: none;
+}
+
+/* layout модального окна */
+.modal-content {
+    padding: 30px 24px 30px 30px;
+    gap: 20px;
+    justify-content: center !important;
+    align-items: center !important;
+}

@@ -1,0 +1,57 @@
+#text {
+    position: absolute;
+    bottom: 100%;
+    font-family: "Akaya Kanadaka", serif;
+    font-weight: 600;
+    font-size: 10em;
+    font-style: normal;
+    line-height: 1em;
+    paint-order: stroke fill;
+    white-space: nowrap; /* Без переноса */
+    letter-spacing: 0.02em;
+    left: 40%;
+    transform-origin: center center;
+    transform: translate(-40%);
+    z-index: 7;
+}
+
+#text .wrapper.letter-wrapper {
+    display: inline-block;
+}
+
+#text:hover {
+    cursor: default;
+}
+#text .wrapper {
+    display: inline-block;
+    position: relative;
+    height: 70px; /* Дальность появления по высоте */
+    width: 70px; /* Дальность появления по ширине */
+    transition: ease 1.5s all; /* Скорость появления */
+}
+#text .wrapper span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transition: ease 0.1s all; /* Реакция при наведении */
+}
+#text .wrapper span.letter-2 {
+    color: #bababa; /* Цвет сзади */
+}
+#text .wrapper span.letter-1 {
+    color: #fff; /* Цвет спереди */
+    z-index: 1;
+}
+#text .wrapper span.letter-1:hover { /* Отступ */
+    top: -7px;
+    right: -7px;
+}
+#text .wrapper span.letter-1:hover ~ .letter-2 { /* Отступ */
+    top: 7px;
+    right: 7px;
+}
+#text .wrapper span.space {
+    padding: 0;
+    min-width: 30px;
+    display: inline-block;
+}
