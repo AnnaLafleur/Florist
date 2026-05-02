@@ -4,6 +4,39 @@ document.addEventListener('DOMContentLoaded', function() {
     let hideTimeout = null;
     let currentActiveStep = null;
 
+
+    function isMobile() {
+        return window.innerWidth <= 768;
+    }
+
+    function getColorIconParent() {
+        if (isMobile()) {
+            const rightSection = document.querySelector('.step-2.active .right-section, .step-3.active .right-section');
+            if (rightSection) return rightSection;
+        }
+        return document.body;
+    }
+
+    function ensureColorIconContainerParent() {
+        if (!colorIconContainer) return;
+        const desiredParent = getColorIconParent();
+        if (colorIconContainer.parentElement !== desiredParent) {
+            desiredParent.appendChild(colorIconContainer);
+            // При возврате на десктоп — сброс мобильных inline-стилей
+            if (!isMobile()) {
+                colorIconContainer.style.position = 'absolute';
+                colorIconContainer.style.left = '';
+                colorIconContainer.style.top = '';
+                colorIconContainer.style.transform = 'translateX(100%) translateY(-50%)';
+                colorIconContainer.style.width = '';
+                colorIconContainer.style.background = '';
+                colorIconContainer.style.clipPath = '';
+                colorIconContainer.style.padding = '';
+                colorIconContainer.style.margin = '';
+            }
+        }
+    }
+
     function hideColorIconsImmediately() {
         if (!colorIconContainer) return;
         if (hideTimeout) {
@@ -75,6 +108,15 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateColorIconsPosition() {
         if (!colorIconContainer || !document.querySelector('.step-2.active, .step-3.active')) return;
 
+        // На мобильных контейнер находится в потоке внутри right-section — позиционировать не нужно
+        if (isMobile()) {
+            colorIconContainer.style.position = '';
+            colorIconContainer.style.left = '';
+            colorIconContainer.style.top = '';
+            colorIconContainer.style.transform = '';
+            return;
+        }
+
         const rightSection = document.querySelector('.step-2.active .right-section, .step-3.active .right-section');
         if (!rightSection) return;
 
@@ -101,13 +143,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function createColorIconContainer() {
-        if (colorIconContainer) return;
+        if (colorIconContainer) {
+            ensureColorIconContainerParent();
+            return;
+        }
 
         colorIconContainer = document.createElement('div');
         colorIconContainer.className = 'color-icon-container';
         colorIconContainer.style.visibility = 'hidden';
         colorIconContainer.style.opacity = '0';
-        document.body.appendChild(colorIconContainer);
+        getColorIconParent().appendChild(colorIconContainer);
 
         const style = document.createElement('style');
         style.textContent = `
@@ -265,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function() {
         colorIconContainer.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
         colorIconContainer.style.visibility = 'visible';
         colorIconContainer.style.opacity = '1';
-        colorIconContainer.style.transform = 'translateX(0) translateY(-50%)';
+        colorIconContainer.style.transform = isMobile() ? '' : 'translateX(0) translateY(-50%)';
         colorIconContainer.style.display = 'flex';
 
         const isStep3 = document.querySelector('.step-3.active');
@@ -601,6 +646,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         window.addEventListener('resize', () => {
+            // При смене размера — перемещаем контейнер в нужного родителя
+            ensureColorIconContainerParent();
+
             if (document.querySelector('.step-2.active, .step-3.active')) {
                 updateBackgroundWidth();
                 updateColorIconsPosition();
