@@ -1,0 +1,694 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Каталог</title>
+        <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/logo.svg">
+        <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/logo.png">
+        <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/logo.ico">
+        <link rel="apple-touch-icon" sizes="242x242" href="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/logo.png">
+        <link rel="stylesheet" href="css/directory.css">
+        <link rel="stylesheet" href="css/main-container.css">
+        <link rel="stylesheet" href="css/main-button.css">
+        <link rel="stylesheet" href="css/menu.css">
+        <link rel="stylesheet" href="css/preloader.css">
+        <link rel="stylesheet" href="css/transition.css">
+        <link rel="stylesheet" href="css/heart.css">
+        <link rel="stylesheet" href="css/directory-mobile.css">
+    </head>
+    <body>
+        <svg style="display:none;" version="1.1" id="heartSymbol" xmlns="http://www.w3.org/2000/svg">
+            <symbol id="heart" viewBox="0 0 50 50">
+                <path stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+            </symbol>
+        </svg>
+        <div class="container">
+            <div class="top-layer"></div>
+            <div class="top-layer top-layer--2"></div>
+            <div class="top-layer top-layer--3"></div>
+        </div>
+        <!-- SVG Background -->
+        <svg class="background-svg" preserveAspectRatio="xMidYMid slice" viewBox="10 10 80 80">
+            <defs>
+                <style>
+                    @keyframes rotate {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+                        100% {
+                            transform: rotate(360deg);
+                        }
+                    }
+                    .out-top {
+                        animation: rotate 40s linear infinite; /* Slowed from 20s to 40s */
+                        transform-origin: 13px 25px;
+                    }
+                    .in-top {
+                        animation: rotate 20s linear infinite; /* Slowed from 10s to 20s */
+                        transform-origin: 13px 25px;
+                    }
+                    .out-bottom {
+                        animation: rotate 50s linear infinite; /* Slowed from 25s to 50s */
+                        transform-origin: 84px 93px;
+                    }
+                    .in-bottom {
+                        animation: rotate 30s linear infinite; /* Slowed from 15s to 30s */
+                        transform-origin: 84px 93px;
+                    }
+                </style>
+            </defs>
+            <path fill="#ffb3a0" class="out-top" d="M37-5C25.1-14.7,5.7-19.1-9.2-10-28.5,1.8-32.7,31.1-19.8,49c15.5,21.5,52.6,22,67.2,2.3C59.4,35,53.7,8.5,37-5Z"/>
+            <path fill="#ffa089" class="in-top" d="M20.6,4.1C11.6,1.5-1.9,2.5-8,11.2-16.3,23.1-8.2,45.6,7.4,50S42.1,38.9,41,24.5C40.2,14.1,29.4,6.6,20.6,4.1Z"/>
+            <path fill="#ffd9ce" class="out-bottom" d="M105.9,48.6c-12.4-8.2-29.3-4.8-39.4.8-23.4,12.8-37.7,51.9-19.1,74.1s63.9,15.3,76-5.6c7.6-13.3,1.8-31.1-2.3-43.8C117.6,63.3,114.7,54.3,105.9,48.6Z"/>
+            <path fill="#ffece7" class="in-bottom" d="M102,67.1c-9.6-6.1-22-3.1-29.5,2-15.4,10.7-19.6,37.5-7.6,47.8s35.9,3.9,44.5-12.5C115.5,92.6,113.9,74.6,102,67.1Z"/>
+        </svg>
+        <div class="preloader">
+            <div class="preloader__row">
+                <div class="preloader__item"></div>
+                <div class="preloader__item"></div>
+            </div>
+        </div>
+        <nav class="nav">
+            <input type="checkbox" class="nav__cb" id="menu-cb"/>
+                <div class="nav__content">
+                    <ul class="nav__items">
+                        <li class="nav__item">
+                            <span class="nav__item-text"><a href="index.html">Главная</a></span>
+                        </li>
+                        <li class="nav__item">
+                            <span class="nav__item-text"><a href="creator.html">Создать букет</a></span>
+                        </li>
+                        <li class="nav__item">
+                            <span class="nav__item-text"><a href="directory.html">Каталог</a></span>
+                        </li>
+                    </ul>
+                </div>
+            <label class="nav__btn" for="menu-cb"></label>
+        </nav>
+        <a href="index.html"><img class="image" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/logo.svg" loading="lazy"></a>
+        <div class="directory-container">
+            <div class="directory-grid">
+                <!-- Гвоздика -->
+                <div class="directory-item" data-flower-name="carnation" data-icons="4" data-current-color="orange" data-icon-colors="#e7e7da,#ffaa57,#ff6047,#cb91ea" data-icon-hover-colors="#bebea2,#f39b44,#f2523a,#b67bd1" data-description="Гвоздика символизирует глубокое уважение и используется для выражения поддержки в дружеских отношениях. Ее дарят, чтобы показать надежность и заботу, например, в знак благодарности близкому человеку.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img1" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/carnation/orange/0001.png" loading="lazy">
+                        <div class="item-caption">Гвоздика</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Георгин -->
+                <div class="directory-item" data-flower-name="dahlia" data-icons="4" data-current-color="pink" data-icon-colors="#e7e7da,#ffaa57,#ffa8ce,#ff6047" data-icon-hover-colors="#bebea2,#f39b44,#e893b6,#f2523a" data-description="Георгин выражает признательность и открытость к новому, связан с моментами перемен в отношениях. Его дарят друзьям или коллегам, чтобы отметить начало нового этапа, например, переезд или новую работу.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img2" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/dahlia/pink/0001.png" loading="lazy">
+                        <div class="item-caption">Георгин</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Гиппеаструм -->
+                <div class="directory-item" data-flower-name="hippeastrum" data-icons="4" data-current-color="blue" data-icon-colors="#e7e7da,#aab1ee,#ffa8ce,#ff6047" data-icon-hover-colors="#bebea2,#9fa7e9,#e893b6,#f2523a" data-description="Гиппеаструм обозначает уверенность и внутреннюю силу, подходит для вдохновляющих жестов в близких отношениях. Его дарят, чтобы поддержать партнера или друга в сложный момент, подчеркивая веру в их способности.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img3" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/hippeastrum/blue/0001.png" loading="lazy">
+                        <div class="item-caption">Гиппеаструм</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Гортензия -->
+                <div class="directory-item" data-flower-name="hydrangea" data-icons="4" data-current-color="yellow" data-icon-colors="#aab1ee,#fbf893,#ffa8ce,#cb91ea" data-icon-hover-colors="#9fa7e9,#e8e563,#e893b6,#b67bd1" data-description="Гортензия представляет благодарность и душевное равновесие, идеальна для выражения признательности в теплых отношениях. Ее часто преподносят на свадьбах или юбилеях, чтобы подчеркнуть гармонию и взаимопонимание.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img4" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/hydrangea/yellow/0001.png" loading="lazy">
+                        <div class="item-caption">Гортензия</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Ирис -->
+                <div class="directory-item" data-flower-name="iris" data-icons="4" data-current-color="pink" data-icon-colors="#e7e7da,#aab1ee,#ffa8ce,#c74d52" data-icon-hover-colors="#bebea2,#9fa7e9,#e893b6,#b04549" data-current-color="white" data-description="Ирис символизирует мудрость и доверие, подходит для глубоких и уважительных отношений. Его дарят наставникам или старшим родственникам, чтобы выразить почтение и признательность за советы.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img5" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/iris/pink/0001.png" loading="lazy">
+                        <div class="item-caption">Ирис</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Калла -->
+                <div class="directory-item" data-flower-name="calla" data-icons="4" data-current-color="orange" data-icon-colors="#e7e7da,#ffaa57,#ffa8ce,#c74d52" data-icon-hover-colors="#bebea2,#f39b44,#e893b6,#b04549" data-description="Калла олицетворяет чистоту и восхищение, часто связана с романтическими или торжественными моментами. Ее выбирают для свадеб или романтических встреч, чтобы подчеркнуть элегантность и искренние чувства.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img6" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/calla/orange/0001.png" loading="lazy">
+                        <div class="item-caption">Калла</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Камелия -->
+                <div class="directory-item" data-flower-name="camellia" data-icons="4" data-current-color="red" data-icon-colors="#e7e7da,#ff6047,#ffa8ce,#cb91ea" data-icon-hover-colors="#bebea2,#f2523a,#e893b6,#b67bd1" data-description="Камелия выражает преданность и восхищение, идеальна для долговременных романтических отношений. Ее дарят на годовщины, чтобы напомнить о глубокой любви и неизменной верности.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img7" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/camellia/red/0001.png" loading="lazy">
+                        <div class="item-caption">Камелия</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Крокус -->
+                <div class="directory-item" data-flower-name="crocus" data-icons="4" data-current-color="pink" data-icon-colors="#e7e7da,#fbf893,#ffa8ce,#cb91ea" data-icon-hover-colors="#bebea2,#e8e563,#e893b6,#b67bd1" data-description="Крокус обозначает радость и новое начало, подходит для дружеских и семейных связей. Его преподносят весной или на дни рождения, чтобы пожелать оптимизма и свежих возможностей.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img8" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/crocus/pink/0001.png" loading="lazy">
+                        <div class="item-caption">Крокус</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Лизиантус -->
+                <div class="directory-item" data-flower-name="lisianthus" data-icons="4" data-current-color="blue" data-icon-colors="#e7e7da,#aab1ee,#ffa8ce,#cb91ea" data-icon-hover-colors="#bebea2,#9fa7e9,#e893b6,#b67bd1" data-description="Лизиантус символизирует признательность и утонченность, используется в теплых и деликатных отношениях. Его дарят друзьям или близким, чтобы поблагодарить за поддержку или отметить важное событие.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img9" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/lisianthus/blue/0001.png" loading="lazy">
+                        <div class="item-caption">Лизиантус</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Лилия -->
+                <div class="directory-item" data-flower-name="lily" data-icons="4" data-current-color="red" data-icon-colors="#e7e7da,#fbf893,#ffa8ce,#ff6047" data-icon-hover-colors="#bebea2,#e8e563,#e893b6,#f2523a" data-description="Лилия представляет невинность и благородство, подходит для торжественных и уважительных моментов. Ее выбирают для свадеб или религиозных праздников, чтобы подчеркнуть чистоту и достоинство.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img10" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/lily/red/0001.png" loading="lazy">
+                        <div class="item-caption">Лилия</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Незабудка -->
+                <div class="directory-item" data-flower-name="forget-me-not" data-icons="0" data-current-color="blue" data-description="Незабудка олицетворяет память и верность, связана с долговременными дружескими или семейными узами. Ее дарят на встречах выпускников или в память о близком человеке, чтобы показать, что связь не забыта.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img11" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/forget-me-not/blue/0001.png" loading="lazy">
+                        <div class="item-caption">Незабудка</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Орхидея -->
+                <div class="directory-item" data-flower-name="orchid" data-icons="4" data-current-color="orange" data-icon-colors="#e7e7da,#aab1ee,#ffaa57,#c74d52" data-icon-hover-colors="#bebea2,#9fa7e9,#f39b44,#b04549" data-description="Орхидея выражает уважение и изысканность, подходит для официальных или романтических отношений. Ее преподносят партнерам или коллегам, чтобы отметить значимые достижения или выразить восхищение.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img12" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/orchid/orange/0001.png" loading="lazy">
+                        <div class="item-caption">Орхидея</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Пион -->
+                <div class="directory-item" data-flower-name="peony" data-icons="4" data-current-color="pink" data-icon-colors="#e7e7da,#ffa8ce,#ff6047,#c74d52" data-icon-hover-colors="#bebea2,#e893b6,#f2523a,#b04549" data-description="Пион символизирует счастье и благополучие, идеален для романтических и семейных событий. Его дарят на свадьбах или новосельях, чтобы пожелать процветания и радости в доме.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img13" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/peony/pink/0001.png" loading="lazy">
+                        <div class="item-caption">Пион</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Ранункулюс -->
+                <div class="directory-item" data-flower-name="ranunculus" data-icons="4" data-current-color="yellow" data-icon-colors="#e7e7da,#fbf893,#ffa8ce,#ff6047" data-icon-hover-colors="#bebea2,#e8e563,#e893b6,#f2523a" data-description="Ранункулюс обозначает привлекательность и энергию, подходит для ярких и страстных отношений. Его выбирают для романтических свиданий или подарков любимым, чтобы подчеркнуть очарование и чувства.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img14" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/ranunculus/yellow/0001.png" loading="lazy">
+                        <div class="item-caption">Ранункулюс</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Роза -->
+                <div class="directory-item" data-flower-name="rose" data-icons="4" data-current-color="red" data-icon-colors="#e7e7da,#fbf893,#ffa8ce,#ff6047" data-icon-hover-colors="#bebea2,#e8e563,#e893b6,#f2523a" data-description="Роза символизирует любовь и страсть, идеальна для романтических отношений. Ее дарят в знак глубоких чувств или на особые события, такие как годовщины или День святого Валентина.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img15" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/rose/red/0001.png" loading="lazy">
+                        <div class="item-caption">Роза</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Сирень -->
+                <div class="directory-item" data-flower-name="lilac" data-icons="4" data-current-color="pink" data-icon-colors="#e7e7da,#ffa8ce,#cb91ea,#c74d52" data-icon-hover-colors="#bebea2,#e893b6,#b67bd1,#b04549" data-description="Сирень олицетворяет юность и первую любовь, связана с нежными и ностальгическими моментами. Ее дарят молодым парам или старым друзьям, чтобы напомнить о первых встречах и теплых воспоминаниях.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img16" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/lilac/pink/0001.png" loading="lazy">
+                        <div class="item-caption">Сирень</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Тюльпан -->
+                <div class="directory-item" data-flower-name="tulip" data-icons="4" data-current-color="red" data-icon-colors="#e7e7da,#fbf893,#ffa8ce,#ff6047" data-icon-hover-colors="#bebea2,#e8e563,#e893b6,#f2523a" data-description="Тюльпан выражает искренние чувства и простоту, подходит для дружеских и романтических жестов. Его дарят на весенние праздники или в начале отношений, чтобы передать тепло и открытость.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img17" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/tulip/red/0001.png" loading="lazy">
+                        <div class="item-caption">Тюльпан</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Хризантема -->
+                <div class="directory-item" data-flower-name="chrysanthemum" data-icons="4" data-current-color="pink" data-icon-colors="#e7e7da,#ffaa57,#ffa8ce,#cb91ea" data-icon-hover-colors="#bebea2,#f39b44,#e893b6,#b67bd1" data-description="Хризантема символизирует стойкость и уважение, часто используется в официальных или семейных отношениях. Ее преподносят на юбилеи или в знак почтения старшим, чтобы пожелать здоровья и долголетия.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img18" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/chrysanthemum/pink/0001.png" loading="lazy">
+                        <div class="item-caption">Хризантема</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Цимбидиум -->
+                <div class="directory-item" data-flower-name="cymbidium" data-icons="4" data-current-color="green" data-icon-colors="#e7e7da,#ade09a,#ffaa57,#c74d52" data-icon-hover-colors="#bebea2,#96ca81,#f39b44,#b04549" data-description="Цимбидиум обозначает утонченность и близость, подходит для глубоких и доверительных отношений. Его дарят близким друзьям или партнерам, чтобы подчеркнуть особую связь и изысканный вкус.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img19" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/cymbidium/green/0001.png" loading="lazy">
+                        <div class="item-caption">Цимбидиум</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+                <!-- Эустома -->
+                <div class="directory-item" data-flower-name="eustoma" data-icons="4" data-current-color="purple" data-icon-colors="#e7e7da,#ade09a,#ffa8ce,#cb91ea" data-icon-hover-colors="#bebea2,#96ca81,#e893b6,#b67bd1" data-description="Эустома выражает признательность и душевную открытость, идеальна для дружеских и семейных моментов. Ее выбирают для подарков на дни рождения или в знак благодарности за поддержку в трудные времена.">
+                    <div class="heart-container stroke">
+                        <input type="checkbox" class="hackyBox">
+                        <span class="heart">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                        <span class="layer">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="item-content btn">
+                        <img id="img20" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/eustoma/purple/0001.png" loading="lazy">
+                        <div class="item-caption">Эустома</div>
+                        <button class="learn-more-1">
+                            <span class="circle"><span class="icon arrow"></span></span>
+                            <span class="button-text">Подробнее</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Модальное окно -->
+        <div class="modal-overlay" id="modal">
+            <div class="modal-container">
+                <button class="modal-close">&times;</button>
+                <div class="modal-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-left-column">
+                            <div class="modal-image-container">
+                                <img class="modal-image" src="">
+                            </div>
+                        </div>
+                        <div class="modal-text-container">
+                            <h2 class="modal-title">Название цветка</h2>
+                            <div class="modal-description">
+                                <p></p>
+                            </div>
+                            <div class="icon-container"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            window.onload = function () {
+                document.body.classList.add('loaded_hiding');
+                window.setTimeout(function () {
+                    document.body.classList.add('loaded');
+                    document.body.classList.remove('loaded_hiding');
+                }, 500);
+            }
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+        <script src="js/animation.js"></script>
+        <script src="js/overlay.js"></script>
+        <script src="js/transition.js"></script>
+        <script src="js/selection.js"></script>
+        <script src="js/heart.js"></script>
+    </body>
+</html>

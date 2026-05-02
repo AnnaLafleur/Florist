@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charSet="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Создание букета</title>
+        <link rel="icon" type="image/svg+xml" href="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/logo.svg">
+        <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/logo.png">
+        <link rel="icon" type="image/x-icon" href="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/logo.ico">
+        <link rel="apple-touch-icon" sizes="242x242" href="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/logo.png">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Diphylleia&display=swap" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="css/creator.css">
+        <link rel="stylesheet" href="css/preloader.css">
+        <link rel="stylesheet" href="css/main-container.css">
+        <link rel="stylesheet" href="css/main-button.css">
+        <link rel="stylesheet" href="css/menu.css">
+        <link rel="stylesheet" href="css/transition.css">
+        <link rel="stylesheet" href="css/directory.css">
+        <link rel="stylesheet" href="css/heart.css">
+        <link rel="stylesheet" href="css/message.css">
+        <link rel="stylesheet" href="css/save.css">
+        <link rel="stylesheet" href="css/creator-mobile.css">
+        <style>
+            /* Fix flower cells position on step2 for PC */
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="left-layer"></div>
+            <div class="left-layer left-layer--2"></div>
+            <div class="left-layer left-layer--3"></div>
+            <div class="right-layer"></div>
+            <div class="right-layer right-layer--2"></div>
+            <div class="right-layer right-layer--3"></div>
+            <div class="top-layer"></div>
+            <div class="top-layer top-layer--2"></div>
+            <div class="top-layer top-layer--3"></div>
+        </div>
+        <svg class="background-svg" preserveAspectRatio="xMidYMid slice" viewBox="10 10 80 80">
+            <defs>
+                <style>
+                    @keyframes rotate {
+                        0% {
+                            transform: rotate(0deg);
+                        }
+                        100% {
+                            transform: rotate(360deg);
+                        }
+                    }
+                    .out-top {
+                        animation: rotate 40s linear infinite; /* Slowed from 20s to 40s */
+                        transform-origin: 13px 25px;
+                    }
+                    .in-top {
+                        animation: rotate 20s linear infinite; /* Slowed from 10s to 20s */
+                        transform-origin: 13px 25px;
+                    }
+                    .out-bottom {
+                        animation: rotate 50s linear infinite; /* Slowed from 25s to 50s */
+                        transform-origin: 84px 93px;
+                    }
+                    .in-bottom {
+                        animation: rotate 30s linear infinite; /* Slowed from 15s to 30s */
+                        transform-origin: 84px 93px;
+                    }
+                </style>
+            </defs>
+            <path fill="#ffb3a0" class="out-top" d="M37-5C25.1-14.7,5.7-19.1-9.2-10-28.5,1.8-32.7,31.1-19.8,49c15.5,21.5,52.6,22,67.2,2.3C59.4,35,53.7,8.5,37-5Z"/>
+            <path fill="#ffa089" class="in-top" d="M20.6,4.1C11.6,1.5-1.9,2.5-8,11.2-16.3,23.1-8.2,45.6,7.4,50S42.1,38.9,41,24.5C40.2,14.1,29.4,6.6,20.6,4.1Z"/>
+            <path fill="#ffd9ce" class="out-bottom" d="M105.9,48.6c-12.4-8.2-29.3-4.8-39.4.8-23.4,12.8-37.7,51.9-19.1,74.1s63.9,15.3,76-5.6c7.6-13.3,1.8-31.1-2.3-43.8C117.6,63.3,114.7,54.3,105.9,48.6Z"/>
+            <path fill="#ffece7" class="in-bottom" d="M102,67.1c-9.6-6.1-22-3.1-29.5,2-15.4,10.7-19.6,37.5-7.6,47.8s35.9,3.9,44.5-12.5C115.5,92.6,113.9,74.6,102,67.1Z"/>
+        </svg>
+        <div class="preloader">
+            <div class="preloader__row">
+                <div class="preloader__item"></div>
+                <div class="preloader__item"></div>
+            </div>
+        </div>
+        <nav class="nav creator-nav">
+            <div class="nav-shadow"></div>
+            <input type="checkbox" class="nav__cb" id="menu-cb"/>
+                <div class="nav__content">
+                    <ul class="nav__items">
+                        <li class="nav__item">
+                            <span class="nav__item-text"><a href="index.html">Главная</a></span>
+                        </li>
+                        <li class="nav__item">
+                            <span class="nav__item-text"><a href="creator.html">Создать букет</a></span>
+                        </li>
+                        <li class="nav__item">
+                            <span class="nav__item-text"><a href="directory.html">Каталог</a></span>
+                        </li>
+                    </ul>
+                </div>
+            <label class="nav__btn" for="menu-cb"></label>
+        </nav>
+        <a href="index.html"><img class="image" src="img/logo.svg" loading="lazy"></a>
+
+        <div class="creator-container">
+            <div class="step step-1 active">
+                <div class="step-content">
+                    <div class="left-section">
+                        <div class="step-1 active">
+                            <div class="left-section">
+                                <div class="ribbon-animation-container">
+                                    <img id="ribbon-animation" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/ribbon/0001.png" loading="lazy">
+                                </div>
+                            </div>
+                        </div>
+                        <h2>Выберите размер букета:</h2>
+                        <div class="counter-container">
+                            <p>В букете будет</p>
+                            <div class="stepper-wrap">
+                                <div class="stepper">
+                                    <div class="count"></div>
+                                </div>
+                                <button class="arrow-btn arrow-top" aria-label="Увеличить"></button>
+                                <button class="arrow-btn arrow-bottom" aria-label="Уменьшить"></button>
+                            </div>
+                            <p>цветов.</p>
+                        </div>
+                    </div>
+                    <div class="right-section">
+                        <h2>Форма букета:</h2>
+                        <div class="bouquet-form">
+                            <div class="form-container">
+                                <button class="arrow-btn arrow-left" aria-label="Предыдущая форма" hidden></button>
+                                <div class="form-display">
+                                    <div class="form-circle form-shape active"></div>
+                                    <div class="form-square form-shape"></div>
+                                    <div class="form-rectangle form-shape"></div>
+                                </div>
+                                <button class="arrow-btn arrow-right" aria-label="Следующая форма"></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="next-button">
+                        <button class="learn-more-1 next-btn-short">
+                            <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">Продолжить</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step step-2">
+                <div class="step-content">
+                    <div class="back-button">
+                        <button class="learn-more-1 back-btn-short">
+                            <span class="circle" aria-hidden="true">
+                                <span class="icon arrow back-arrow"></span>
+                            </span>
+                            <span class="button-text">Назад</span>
+                        </button>
+                    </div>
+
+                    <div class="left-section">
+                        <svg id="flowers-svg"></svg>
+                    </div>
+
+                    <div class="right-section">
+                        <div class="color-icon-container"></div>
+                            <div class="directory-grid" data-type="flower">
+                                <label class="directory-item" data-flower-name="carnation" data-current-color="orange" data-icon-colors="#e7e7da,#ffaa57,#ff6047,#cb91ea" data-icon-hover-colors="#bebea2,#f39b44,#f2523a,#b67bd1">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img1" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/carnation/orange/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Гвоздика</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="dahlia" data-current-color="pink" data-icon-colors="#e7e7da,#ffaa57,#ffa8ce,#ff6047" data-icon-hover-colors="#bebea2,#f39b44,#e893b6,#f2523a">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img2" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/dahlia/pink/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Георгин</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="hippeastrum" data-current-color="blue" data-icon-colors="#e7e7da,#aab1ee,#ffa8ce,#ff6047" data-icon-hover-colors="#bebea2,#9fa7e9,#e893b6,#f2523a">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img3" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/hippeastrum/blue/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Гиппеаструм</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="hydrangea" data-current-color="yellow" data-icon-colors="#aab1ee,#fbf893,#ffa8ce,#cb91ea" data-icon-hover-colors="#9fa7e9,#e8e563,#e893b6,#b67bd1">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img4" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/hydrangea/yellow/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Гортензия</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="iris" data-current-color="pink" data-icon-colors="#e7e7da,#aab1ee,#ffa8ce,#c74d52" data-icon-hover-colors="#bebea2,#9fa7e9,#e893b6,#b04549">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img5" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/iris/pink/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Ирис</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="calla" data-current-color="orange" data-icon-colors="#e7e7da,#ffaa57,#ffa8ce,#c74d52" data-icon-hover-colors="#bebea2,#f39b44,#e893b6,#b04549">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img6" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/calla/orange/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Калла</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="camellia" data-current-color="red" data-icon-colors="#e7e7da,#ff6047,#ffa8ce,#cb91ea" data-icon-hover-colors="#bebea2,#f2523a,#e893b6,#b67bd1">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img7" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/camellia/red/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Камелия</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="crocus" data-current-color="pink" data-icon-colors="#e7e7da,#fbf893,#ffa8ce,#cb91ea" data-icon-hover-colors="#bebea2,#e8e563,#e893b6,#b67bd1">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img8" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/crocus/pink/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Крокус</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="lisianthus" data-current-color="blue" data-icon-colors="#e7e7da,#aab1ee,#ffa8ce,#cb91ea" data-icon-hover-colors="#bebea2,#9fa7e9,#e893b6,#b67bd1">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img9" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/lisianthus/blue/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Лизиантус</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="lily" data-current-color="red" data-icon-colors="#e7e7da,#fbf893,#ffa8ce,#ff6047" data-icon-hover-colors="#bebea2,#e8e563,#e893b6,#f2523a">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img10" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/lily/red/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Лилия</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="forget-me-not" data-current-color="blue">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img11" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/forget-me-not/blue/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Незабудка</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="orchid" data-current-color="orange" data-icon-colors="#e7e7da,#aab1ee,#ffaa57,#c74d52" data-icon-hover-colors="#bebea2,#9fa7e9,#f39b44,#b04549">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img12" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/orchid/orange/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Орхидея</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="peony" data-current-color="pink" data-icon-colors="#e7e7da,#ffa8ce,#ff6047,#c74d52" data-icon-hover-colors="#bebea2,#e893b6,#f2523a,#b04549">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img13" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/peony/pink/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Пион</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="ranunculus" data-current-color="yellow" data-icon-colors="#e7e7da,#fbf893,#ffa8ce,#ff6047" data-icon-hover-colors="#bebea2,#e8e563,#e893b6,#f2523a">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img14" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/ranunculus/yellow/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Ранункулюс</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="rose" data-current-color="red" data-icon-colors="#e7e7da,#fbf893,#ffa8ce,#ff6047" data-icon-hover-colors="#bebea2,#e8e563,#e893b6,#f2523a">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img15" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/rose/red/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Роза</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="lilac" data-current-color="pink" data-icon-colors="#e7e7da,#ffa8ce,#cb91ea,#c74d52" data-icon-hover-colors="#bebea2,#e893b6,#b67bd1,#b04549">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img16" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/lilac/pink/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Сирень</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="tulip" data-current-color="red" data-icon-colors="#e7e7da,#fbf893,#ffa8ce,#ff6047" data-icon-hover-colors="#bebea2,#e8e563,#e893b6,#f2523a">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img17" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/tulip/red/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Тюльпан</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="chrysanthemum" data-current-color="pink" data-icon-colors="#e7e7da,#ffaa57,#ffa8ce,#cb91ea" data-icon-hover-colors="#bebea2,#f39b44,#e893b6,#b67bd1">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img18" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/chrysanthemum/pink/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Хризантема</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="cymbidium" data-current-color="green" data-icon-colors="#e7e7da,#ade09a,#ffaa57,#c74d52" data-icon-hover-colors="#bebea2,#96ca81,#f39b44,#b04549">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img19" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/cymbidium/green/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Цимбидиум</div>
+                                    </div>
+                                </label>
+
+                                <label class="directory-item" data-flower-name="eustoma" data-current-color="purple" data-icon-colors="#e7e7da,#ade09a,#ffa8ce,#cb91ea" data-icon-hover-colors="#bebea2,#96ca81,#e893b6,#b67bd1">
+                                    <input class="item-content__input" type="radio" name="flower-selection">
+                                    <div class="heart-container stroke">
+                                        <input type="checkbox" class="hackyBox">
+                                        <span class="heart">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                        <span class="layer">
+                                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                                <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                                c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                                c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    <div class="item-content btn">
+                                        <div class="item-content-cover">
+                                            <img id="img20" src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/eustoma/purple/0001.png" class="item-content-cover-image" loading="lazy">
+                                        </div>
+                                        <div class="item-caption">Эустома</div>
+                                    </div>
+                                </label>
+                            </div>
+
+                        <div class="directory-grid" data-type="green" style="display: none;">
+                            <label class="directory-item" data-green-name="asporagus">
+                                <input class="item-content__input" type="radio" name="green-selection">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content btn">
+                                    <div class="item-content-cover">
+                                        <img id="img21" src="img/green/asporagus/0001.png" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="directory-item" data-green-name="gypsophila">
+                                <input class="item-content__input" type="radio" name="green-selection">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content btn">
+                                    <div class="item-content-cover">
+                                        <img id="img22" src="img/green/gypsophila/0001.png" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="directory-item" data-green-name="eucalyptus">
+                                <input class="item-content__input" type="radio" name="green-selection">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content btn">
+                                    <div class="item-content-cover">
+                                        <img id="img23" src="img/green/eucalyptus/0001.png" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="directory-item" data-green-name="fern">
+                                <input class="item-content__input" type="radio" name="green-selection">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content btn">
+                                    <div class="item-content-cover">
+                                        <img id="img24" src="img/green/fern/0001.png" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="next-button">
+                        <button class="learn-more-1 next-btn-short">
+                            <span class="circle" aria-hidden="true">
+                                <span class="icon arrow"></span>
+                            </span>
+                            <span class="button-text">Продолжить</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="step step-3">
+                <div class="step-content">
+                    <div class="back-button">
+                        <button class="learn-more-1 back-btn-short">
+                            <span class="circle" aria-hidden="true">
+                                <span class="icon arrow back-arrow"></span>
+                            </span>
+                            <span class="button-text">Назад</span>
+                        </button>
+                    </div>
+
+                    <div class="left-section">
+                        <svg id="ellipse-svg" style="width: 100%; height: 300px;"></svg>
+                    </div>
+                    <div class="right-section">
+                        <div class="container tabs-container">
+                            <div class="tabs">
+                                <input type="radio" id="radio-2" name="tabs" checked />
+                                <label class="tab" for="radio-2"><img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/paper.svg" loading="lazy"></label>
+                                <input type="radio" id="radio-3" name="tabs" />
+                                <label class="tab" for="radio-3"><img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/box.svg" loading="lazy"></label>
+                                <span class="glider"></span>
+                            </div>
+                        </div>
+                        <div class="directory-grid" data-type="texture">
+                            <div class="directory-item" data-texture-name="texture-1" data-current-color="brown" data-icon-colors="#c97b5b,#ade09a,#aab1ee,#ffa8ce" data-icon-hover-colors="#bd704f,#96ca81,#9fa7e9,#e893b6">
+                                <input type="radio" name="texture" id="texture-1" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/cell/0001/brown.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="texture-2" >
+                                <input type="radio" name="texture" id="texture-2" class="item-content__input" data-current-color="white" data-icon-colors="#e7e7da" data-icon-hover-colors="#bebea2">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/cell/0002/white.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="texture-3" data-current-color="green" data-icon-colors="#aab1ee,#ade09a,#fbf893,#ffa8ce" data-icon-hover-colors="#9fa7e9,#96ca81,#e8e563,#e893b6">
+                                <input type="radio" name="texture" id="texture-3" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/cell/0003/green.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="texture-4" data-current-color="red" data-icon-colors="#e7e7da,#aab1ee,#cb91ea,#ff6047" data-icon-hover-colors="#bebea2,#9fa7e9,#b67bd1,#f2523a">
+                                <input type="radio" name="texture" id="texture-4" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/cell/0004/red.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="texture-5" data-current-color="purple" data-icon-colors="#ade09a,#aab1ee,#cb91ea,#ff6047" data-icon-hover-colors="#96ca81,#9fa7e9,#b67bd1,#f2523a">
+                                <input type="radio" name="texture" id="texture-5" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/cell/0005/purple.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="texture-6" data-current-color="blue" data-icon-colors="#ade09a,#aab1ee,#cb91ea,#ff6047" data-icon-hover-colors="#96ca81,#9fa7e9,#b67bd1,#f2523a">
+                                <input type="radio" name="texture" id="texture-6" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/cell/0006/blue.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="texture-7" data-current-color="pink" data-icon-colors="#ade09a,#fbf893,#ffa8ce,#cb91ea" data-icon-hover-colors="#96ca81,#e8e563,#e893b6,#b67bd1">
+                                <input type="radio" name="texture" id="texture-7" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/cell/0007/pink.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="texture-8" data-current-color="orange" data-icon-colors="#ffaa57,#fbf893,#aab1ee,#cb91ea" data-icon-hover-colors="#f39b44,#e8e563,#9fa7e9,#b67bd1">
+                                <input type="radio" name="texture" id="texture-8" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/cell/0008/orange.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="texture-9" data-current-color="white" data-icon-colors="#e7e7da" data-icon-hover-colors="#bebea2">
+                                <input type="radio" name="texture" id="texture-9" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/cell/0009/white.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="texture-10" data-current-color="red" data-icon-colors="#ffa8ce,#fbf893,#ffaa57,#ff6047" data-icon-hover-colors="#e893b6,#e8e563,#f39b44,#f2523a">
+                                <input type="radio" name="texture" id="texture-10" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/cell/0010/red.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="directory-grid" data-type="print">
+                            <div class="directory-item" data-texture-name="print-1" data-current-color="yellow" data-icon-colors="#ffa8ce,#fbf893,#ade09a,#aab1ee" data-icon-hover-colors="#e893b6,#e8e563,#96ca81,#9fa7e9">
+                                <input type="radio" name="print" id="print-1" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/print/cell/0001/yellow.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="print-2" data-current-color="white" data-icon-colors="#e7e7da,#ade09a,#aab1ee,#cb91ea" data-icon-hover-colors="#bebea2,#96ca81,#9fa7e9,#b67bd1">
+                                <input type="radio" name="print" id="print-2" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/print/cell/0002/white.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="print-3" data-current-color="purple" data-icon-colors="#e7e7da,#ade09a,#aab1ee,#cb91ea" data-icon-hover-colors="#bebea2,#96ca81,#9fa7e9,#b67bd1">
+                                <input type="radio" name="print" id="print-3" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/print/cell/0003/purple.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="print-4" data-current-color="white" data-icon-colors="#e7e7da" data-icon-hover-colors="#bebea2">
+                                <input type="radio" name="print" id="print-4" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/print/cell/0004/white.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="print-5" data-current-color="pink" data-icon-colors="#ffa8ce,#ade09a,#aab1ee,#cb91ea" data-icon-hover-colors="#e893b6,#96ca81,#9fa7e9,#b67bd1">
+                                <input type="radio" name="print" id="print-5" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/print/cell/0005/pink.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="print-6" data-current-color="pink" data-icon-colors="#ffaa57,#ffa8ce,#aab1ee,#cb91ea" data-icon-hover-colors="#f39b44,#e893b6,#9fa7e9,#b67bd1">
+                                <input type="radio" name="print" id="print-6" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/print/cell/0006/pink.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="print-7" data-current-color="purple" data-icon-colors="#e7e7da,#cb91ea,#ffa8ce,#ff6047" data-icon-hover-colors="#bebea2,#b67bd1,#e893b6,#f2523a">
+                                <input type="radio" name="print" id="print-7" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/print/cell/0007/purple.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="print-8" data-current-color="white" data-icon-colors="#e7e7da" data-icon-hover-colors="#bebea2">
+                                <input type="radio" name="print" id="print-8" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/print/cell/0008/purple.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="print-9" data-current-color="green" data-icon-colors="#ffa8ce,#fbf893,#ade09a,#aab1ee" data-icon-hover-colors="#e893b6,#e8e563,#96ca81,#9fa7e9">
+                                <input type="radio" name="print" id="print-9" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/print/cell/0009/green.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="directory-item" data-texture-name="print-10" data-current-color="white" data-icon-colors="#e7e7da,#fbf893,#ade09a,#aab1ee" data-icon-hover-colors="#bebea2,#e8e563,#96ca81,#9fa7e9">
+                                <input type="radio" name="print" id="print-10" class="item-content__input">
+                                <div class="heart-container stroke">
+                                    <input type="checkbox" class="hackyBox">
+                                    <span class="heart">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path stroke-width="2" stroke="#ddd" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                    <span class="layer">
+                                        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50">
+                                            <path class="animatedPath" stroke="#D75A4A" stroke-width="2" style="fill:currentColor;" d="M24.85,10.126c2.018-4.783,6.628-8.125,11.99-8.125c7.223,0,12.425,6.179,13.079,13.543
+                                            c0,0,0.353,1.828-0.424,5.119c-1.058,4.482-3.545,8.464-6.898,11.503L24.85,48L7.402,32.165c-3.353-3.038-5.84-7.021-6.898-11.503
+                                            c-0.777-3.291-0.424-5.119-0.424-5.119C0.734,8.179,5.936,2,13.159,2C18.522,2,22.832,5.343,24.85,10.126z"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                                <div class="item-content">
+                                    <div class="item-content-cover">
+                                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/print/cell/0010/white.jpg" class="item-content-cover-image" loading="lazy">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="toast">
+                <div class="toast-content">
+                    <div class="check">
+                        <img src="https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/attention.svg" class="check-icon" loading="lazy">
+                    </div>
+                    <div class="message">
+                        <span class="text text-2">Заполните букет полностью,</span>
+                        <span class="text text-2">чтобы перейти далее</span>
+                    </div>
+                </div>
+                <i class="fa-solid fa-xmark close"></i>
+                <div class="progress"></div>
+            </div>
+        </div>
+        <script>
+            window.onload = function () {
+                document.body.classList.add('loaded_hiding');
+                window.setTimeout(function () {
+                    document.body.classList.add('loaded');
+                    document.body.classList.remove('loaded_hiding');
+                }, 500);
+            }
+        </script>
+        <script>
+            if (document.querySelector('.step-1.active')) {
+                const RIBBON_FRAME_COUNT = 35;
+                const RIBBON_FPS = 14; // ~70ms per frame
+
+                function preloadAll(folder, frameCount) {
+                    return new Promise(resolve => {
+                        const preloaded = new Array(frameCount);
+                        let loaded = 0;
+                        let index = 0;
+                        const CONCURRENCY = 8;
+
+                        function loadNext() {
+                            if (index >= frameCount) return;
+                            const i = index++;
+                            const frameNumber = String(i + 1).padStart(4, '0');
+                            const img = new Image();
+                            img.onload = () => {
+                                loaded++;
+                                if (loaded === frameCount) resolve(preloaded);
+                                else loadNext();
+                            };
+                            img.onerror = () => {
+                                setTimeout(() => { img.src = img.src.split('?')[0] + '?r=' + Date.now(); }, 1000);
+                            };
+                            img.src = `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/${folder}/${frameNumber}.png`;
+                            preloaded[i] = img;
+                        }
+
+                        for (let i = 0; i < Math.min(CONCURRENCY, frameCount); i++) loadNext();
+                    });
+                }
+
+                function startCanvasAnimation(elementId, preloaded, fps) {
+                    const img = document.getElementById(elementId);
+                    if (!img) return;
+
+                    const canvas = document.createElement('canvas');
+                    canvas.width  = img.naturalWidth  || img.width  || 1024;
+                    canvas.height = img.naturalHeight || img.height || 1024;
+                    canvas.style.cssText = img.style.cssText;
+                    canvas.className = img.className;
+                    canvas.style.width  = img.style.width  || img.offsetWidth  + 'px';
+                    canvas.style.height = img.style.height || img.offsetHeight + 'px';
+                    img.parentNode.replaceChild(canvas, img);
+
+                    const ctx = canvas.getContext('2d');
+                    const interval = 1000 / fps;
+                    let frame = 0;
+                    let lastTime = null;
+
+                    ctx.drawImage(preloaded[0], 0, 0, canvas.width, canvas.height);
+
+                    function tick(timestamp) {
+                        if (lastTime === null) lastTime = timestamp;
+                        const elapsed = timestamp - lastTime;
+                        if (elapsed >= interval) {
+                            const skipped = Math.floor(elapsed / interval);
+                            frame = (frame + skipped) % preloaded.length;
+                            lastTime = timestamp - (elapsed % interval);
+                            ctx.clearRect(0, 0, canvas.width, canvas.height);
+                            ctx.drawImage(preloaded[frame], 0, 0, canvas.width, canvas.height);
+                        }
+                        requestAnimationFrame(tick);
+                    }
+
+                    requestAnimationFrame(tick);
+                }
+
+                preloadAll('ribbon', RIBBON_FRAME_COUNT).then(preloaded => {
+                    startCanvasAnimation('ribbon-animation', preloaded, RIBBON_FPS);
+                });
+            }
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                function updateBodyClass() {
+                    const activeStep = document.querySelector('.step.active');
+                    if (activeStep && activeStep.classList.contains('step-2')) {
+                        document.body.classList.add('step-2-active');
+                    } else {
+                        document.body.classList.remove('step-2-active');
+                    }
+                }
+
+                updateBodyClass();
+
+                const observer = new MutationObserver(function(mutations) {
+                    mutations.forEach(function(mutation) {
+                        if (mutation.attributeName === 'class') {
+                            updateBodyClass();
+                        }
+                    });
+                });
+
+                const container = document.querySelector('.creator-container');
+                if (container) {
+                    observer.observe(container, {
+                        attributes: true,
+                        subtree: true,
+                        attributeFilter: ['class']
+                    });
+                }
+
+                const nextButtons = document.querySelectorAll('.next-btn-short');
+                const backButtons = document.querySelectorAll('.back-btn-short');
+
+                nextButtons.forEach(btn => btn.addEventListener('click', updateBodyClass));
+                backButtons.forEach(btn => btn.addEventListener('click', updateBodyClass));
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const directoryItems = document.querySelectorAll('.directory-item');
+
+                directoryItems.forEach(item => {
+                    const input = item.querySelector('.item-content__input[type="radio"]');
+                    const content = item.querySelector('.item-content');
+
+                    content.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        input.focus({ preventScroll: true });
+
+                        if (input.checked) {
+                            input.checked = false;
+                            content.classList.remove('selected');
+                        } else {
+                            document.querySelectorAll('.directory-item .item-content').forEach(otherContent => {
+                                otherContent.classList.remove('selected');
+                            });
+                            input.checked = true;
+                            content.classList.add('selected');
+                        }
+                    });
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                function updateBackgroundWidth() {
+                    const grids = [
+                        document.querySelector('.step-2 .right-section .directory-grid'),
+                        document.querySelector('.step-3 .right-section .directory-grid')
+                    ];
+
+                    grids.forEach(grid => {
+                        if (!grid) return;
+
+                        const rightSection = grid.closest('.right-section');
+                        if (!rightSection) return;
+
+                        const cellWidth = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--cell-width')) || 240; // Default to 240px
+                        const columnGap = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--column-gap')) || 15; // Default to 15px
+                        const extraPadding = 100; // Match step-2's extra padding
+
+                        rightSection.style.width = 'auto';
+                        grid.style.width = '100%';
+
+                        grid.offsetWidth;
+
+                        const availableWidth = window.innerWidth * 0.45 - 80;
+                        const columns = Math.max(1, Math.floor((availableWidth + columnGap) / (cellWidth + columnGap)));
+
+                        grid.style.gridTemplateColumns = `repeat(${columns}, ${cellWidth}px)`;
+
+                        const totalWidth = columns * cellWidth + (columns - 1) * columnGap + extraPadding;
+                        rightSection.style.width = `${totalWidth}px`;
+                    });
+                }
+
+                updateBackgroundWidth();
+                requestAnimationFrame(updateCellZoomForMobile);
+
+                window.addEventListener('resize', () => {
+                    updateBackgroundWidth();
+                    requestAnimationFrame(updateCellZoomForMobile);
+                });
+
+                const observer = new MutationObserver(() => {
+                    if (document.querySelector('.step-2.active') || document.querySelector('.step-3.active')) {
+                        updateBackgroundWidth();
+                        requestAnimationFrame(updateCellZoomForMobile);
+                    }
+                });
+
+                observer.observe(document.body, {
+                    attributes: true,
+                    subtree: true,
+                    attributeFilter: ['class']
+                });
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const navMenu = document.querySelector('nav.creator-nav');
+                if (!navMenu) return;
+
+                function updateNavStyles(step) {
+                    if (step === 'step-3') {
+                        var boxRadio = document.getElementById('radio-3');
+                        var activeShape = document.querySelector('.form-shape.active');
+                        var shapes = ['form-circle', 'form-square', 'form-rectangle'];
+                        var selectedShape = activeShape
+                            ? activeShape.className.split(' ').find(function(cls) { return shapes.includes(cls); })
+                            : 'form-circle';
+
+                        if (selectedShape !== 'form-circle' || (boxRadio && boxRadio.checked)) {
+                            navMenu.style.background = '#ff957a';
+                            navMenu.style.boxShadow = '0 0 0 7px #fd8262';
+                        } else {
+                            navMenu.style.background = '';
+                            navMenu.style.boxShadow = '';
+                        }
+                    } else {
+                        navMenu.style.background = '#fd8264';
+                        navMenu.style.boxShadow = 'none';
+                    }
+                }
+
+                document.addEventListener('transitionEnd', (e) => {
+                    if (e.detail?.step) {
+                        updateNavStyles(e.detail.step);
+                    }
+                });
+
+                // Set initial style based on current step
+                const activeStep = document.querySelector('.step.active')?.className.split(' ').find(cls => cls.startsWith('step-'));
+                if (activeStep) {
+                    updateNavStyles(activeStep);
+                } else {
+                    navMenu.style.background = '#fd8264';
+                    navMenu.style.boxShadow = 'none';
+                }
+            });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+        <script src="js/counter.js"></script>
+        <script src="js/navigation.js"></script>
+        <script src="js/transition.js"></script>
+        <script src="js/selection.js"></script>
+        <script src="js/circle.js"></script>
+        <script src="js/square.js"></script>
+        <script src="js/rectangle.js"></script>
+        <script src="js/color.js"></script>
+        <script src="js/animation.js"></script>
+        <script src="js/insert.js"></script>
+        <script src="js/flower-or-green.js"></script>
+        <script src="js/paper-or-box.js"></script>
+        <script src="js/heart.js"></script>
+        <script src="js/ellipse.js"></script>
+        <script src="js/save.js"></script>
+        <script>
+            function updateCellZoomForMobile() {
+                if (window.innerWidth > 768) return;
+                if (!document.querySelector('.step-2.active')) return;
+
+                const rightSection = document.querySelector('.step-2 .right-section');
+                const grid = document.querySelector('.step-2 .right-section .directory-grid');
+                const colorIconContainer = document.querySelector('.step-2 .color-icon-container');
+                if (!rightSection || !grid) return;
+
+                // Force layout recalc
+                rightSection.offsetHeight;
+
+                const rightSectionRect = rightSection.getBoundingClientRect();
+                const cs = getComputedStyle(rightSection);
+                const paddingTop = parseFloat(cs.paddingTop) || 0;
+                const paddingBottom = parseFloat(cs.paddingBottom) || 0;
+
+                // Content zone inside padding
+                const contentHeight = rightSectionRect.height - paddingTop - paddingBottom;
+
+                const colorIconRect = colorIconContainer ? colorIconContainer.getBoundingClientRect() : { height: 0 };
+                const gap = 10;
+                const colorIconMarginBottom = colorIconContainer ? (parseFloat(getComputedStyle(colorIconContainer).marginBottom) || 15) : 0;
+                const colorIconHeight = colorIconRect.height;
+
+                // Available height for the grid (inside content zone, below color icons)
+                const availableForGrid = contentHeight - colorIconHeight - (colorIconHeight > 0 ? colorIconMarginBottom : 0);
+
+                if (availableForGrid < 60) return;
+
+                // zoom so that exactly 2 rows of cells (CELL_BASE_HEIGHT each) + 1 gap fit in availableForGrid
+                // Layout: 2 * CELL_BASE_HEIGHT * zoom + gap = availableForGrid
+                const CELL_BASE_HEIGHT = 230;
+                const zoom = Math.max(0.3, Math.min(1, (availableForGrid - gap) / (2 * CELL_BASE_HEIGHT)));
+
+                // Grid height = actual layout height of 2 zoomed rows + gap between them
+                const gridLayoutHeight = 2 * CELL_BASE_HEIGHT * zoom + gap;
+
+                document.documentElement.style.setProperty('--cell-zoom', zoom);
+                document.documentElement.style.setProperty('--icon-zoom', Math.max(0.3, zoom * 0.65 / 0.55));
+                grid.style.setProperty('--grid-height', gridLayoutHeight + 'px');
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+                requestAnimationFrame(() => requestAnimationFrame(updateCellZoomForMobile));
+
+                window.addEventListener('resize', updateCellZoomForMobile);
+
+                const observer = new MutationObserver(() => requestAnimationFrame(updateCellZoomForMobile));
+                observer.observe(document.body, { attributes: true, attributeFilter: ['class'] });
+
+                const container = document.querySelector('.creator-container');
+                if (container) {
+                    observer.observe(container, { attributes: true, subtree: true, attributeFilter: ['class'] });
+                }
+            });
+        </script>
+    </body>
+</html>
