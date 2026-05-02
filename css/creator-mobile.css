@@ -614,6 +614,18 @@
     body.step-2-visible .color-icon-container {
         display: flex !important;
     }
+
+    /* Десктоп: абсолютное позиционирование */
+    @media (min-width: 769px) {
+        .color-icon-container {
+            position: absolute !important;
+            bottom: auto !important;
+            left: auto !important;
+            right: auto !important;
+            top: 50% !important;
+            transform: translateY(-50%) translateX(100%) !important;
+        }
+    }
 }
 
     /* Мобильная версия: контейнер ВНУТРИ right-section, перед сеткой */
