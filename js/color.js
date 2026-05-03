@@ -61,6 +61,16 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function updateBackgroundWidth() {
+        // Не менять стили на ПК версии - они жестко зафиксированы в CSS
+        if (window.innerWidth > 768) {
+            const rightSection = document.querySelector('.step-2.active .right-section, .step-3.active .right-section');
+            if (rightSection) {
+                rightSection.style.width = '';
+                rightSection.style.minWidth = '';
+            }
+            return;
+        }
+
         if (!document.querySelector('.step-2.active, .step-3.active')) {
             const rightSection = document.querySelector('.step-1.active .right-section');
             if (rightSection) {
