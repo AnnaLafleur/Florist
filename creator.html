@@ -1596,10 +1596,31 @@
                     }
                 }
 
+                function updateRightSectionHeight() {
+                    var rightSection = document.querySelector('.step-3 .right-section');
+                    if (!rightSection) return;
+
+                    var step3Active = document.querySelector('.step-3.active');
+                    if (!step3Active) {
+                        rightSection.classList.remove('full-height');
+                        return;
+                    }
+
+                    var activeShape = document.querySelector('.form-shape.active');
+                    var isSquareOrRectangle = activeShape && (activeShape.classList.contains('form-square') || activeShape.classList.contains('form-rectangle'));
+
+                    if (isSquareOrRectangle) {
+                        rightSection.classList.add('full-height');
+                    } else {
+                        rightSection.classList.remove('full-height');
+                    }
+                }
+
                 // Update on transitionEnd event
                 document.addEventListener('transitionEnd', (e) => {
                     if (e.detail?.step) {
                         updateNavStyles(e.detail.step);
+                        updateRightSectionHeight();
                     }
                 });
 
@@ -1612,11 +1633,20 @@
                             updateNavStyles(stepClass);
                         }
                     }
+                    updateRightSectionHeight();
                 });
 
                 var steps = document.querySelectorAll('.step');
                 steps.forEach(function(step) {
                     observer.observe(step, { attributes: true, attributeFilter: ['class'] });
+                });
+
+                // Listen for shape changes
+                var shapeDivs = document.querySelectorAll('.form-shape');
+                shapeDivs.forEach(function(shapeDiv) {
+                    shapeDiv.addEventListener('click', function() {
+                        setTimeout(updateRightSectionHeight, 0);
+                    });
                 });
 
                 // Set initial style based on current step
@@ -1630,6 +1660,7 @@
                     navMenu.style.background = '#fd8264';
                     navMenu.style.boxShadow = 'none';
                 }
+                updateRightSectionHeight();
             });
         </script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
