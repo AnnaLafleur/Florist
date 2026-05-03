@@ -1596,16 +1596,36 @@
                     }
                 }
 
+                // Update on transitionEnd event
                 document.addEventListener('transitionEnd', (e) => {
                     if (e.detail?.step) {
                         updateNavStyles(e.detail.step);
                     }
                 });
 
+                // Also update on step class changes via MutationObserver
+                var observer = new MutationObserver(function() {
+                    var activeStep = document.querySelector('.step.active');
+                    if (activeStep) {
+                        var stepClass = Array.from(activeStep.classList).find(function(cls) { return cls.startsWith('step-'); });
+                        if (stepClass) {
+                            updateNavStyles(stepClass);
+                        }
+                    }
+                });
+
+                var steps = document.querySelectorAll('.step');
+                steps.forEach(function(step) {
+                    observer.observe(step, { attributes: true, attributeFilter: ['class'] });
+                });
+
                 // Set initial style based on current step
-                const activeStep = document.querySelector('.step.active')?.className.split(' ').find(cls => cls.startsWith('step-'));
+                var activeStep = document.querySelector('.step.active');
                 if (activeStep) {
-                    updateNavStyles(activeStep);
+                    var stepClass = Array.from(activeStep.classList).find(function(cls) { return cls.startsWith('step-'); });
+                    if (stepClass) {
+                        updateNavStyles(stepClass);
+                    }
                 } else {
                     navMenu.style.background = '#fd8264';
                     navMenu.style.boxShadow = 'none';
