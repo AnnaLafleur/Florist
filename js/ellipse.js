@@ -2,8 +2,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const svgEllipse = document.getElementById('ellipse-svg');
     if (!svgEllipse) return;
 
-    svgEllipse.style.width = '100%';
-    svgEllipse.style.height = 'auto';
+    // Не меняем размер на ПК - он зафиксирован в CSS
+    if (window.innerWidth <= 768) {
+        svgEllipse.style.width = '100%';
+        svgEllipse.style.height = 'auto';
+    }
 
     const unitRadius = 30;
     const perspectiveScale = 0.58;
