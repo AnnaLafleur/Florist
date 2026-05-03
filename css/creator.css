@@ -1006,8 +1006,8 @@ input[id="radio-3"]:checked ~ .glider {
         left: auto !important;
         top: 130px !important;
         bottom: 0 !important;
-        width: 645px !important;
-        min-width: 645px !important;
+        width: 590px !important;
+        min-width: 590px !important;
         max-width: 45vw !important;
         transform: none !important;
         flex-direction: column !important;
