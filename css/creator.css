@@ -1025,6 +1025,10 @@ input[id="radio-3"]:checked ~ .glider {
         z-index: 1 !important;
     }
 
+    .step-3 .right-section.full-height {
+        top: 0 !important;
+    }
+
     .step-2 .right-section::before {
         content: '' !important;
         position: absolute !important;
