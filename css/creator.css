@@ -693,6 +693,12 @@ body.step-2-active {
     z-index: 0;
 }
 
+.step-3 .left-section #ellipse-svg {
+    width: 500px !important;
+    height: 500px !important;
+    max-width: 100%;
+}
+
 .step-3 .step-content {
     display: block;
     width: 100%;
