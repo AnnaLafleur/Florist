@@ -707,20 +707,6 @@ body.step-2-active {
     padding: 0;
 }
 
-.step-3 .right-section {
-    position: fixed;
-    right: 0;
-    top: 130px;
-    bottom: 0;
-    overflow: hidden;
-    box-sizing: border-box;
-    padding: 0 20px 0 40px;
-    background: #fd8264;
-    border-radius: 60px 0 0 60px;
-    max-width: 45vw;
-    z-index: 1;
-}
-
 .step-3 .right-section .directory-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, 230px);
@@ -1018,15 +1004,27 @@ input[id="radio-3"]:checked ~ .glider {
         transform: none !important;
         flex-direction: column !important;
         display: flex !important;
-        background: #fd8264 !important;
-        border-radius: 60px 0 0 60px !important;
         padding: 0 20px 0 40px !important;
         overflow: hidden !important;
         z-index: 1 !important;
     }
 
-    .step-3 .right-section.full-height {
+    html body .step-3.right-section::before,
+    html body .step-3 .right-section::before {
+        content: '' !important;
+        position: absolute !important;
         top: 0 !important;
+        bottom: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        background: #fd8264 !important;
+        border-radius: 60px 0 0 60px !important;
+        z-index: -1 !important;
+    }
+
+    html body .step-3.right-section.full-height::before,
+    html body .step-3 .right-section.full-height::before {
+        top: -130px !important;
     }
 
     .step-2 .right-section::before {
