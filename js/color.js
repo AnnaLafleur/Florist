@@ -117,6 +117,9 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
+        // FIX: Reset transform that might have been set during mobile→desktop transition
+        colorIconContainer.style.transform = 'translateX(0) translateY(-50%)';
+
         const rightSection = document.querySelector('.step-2.active .right-section, .step-3.active .right-section');
         if (!rightSection) return;
 
