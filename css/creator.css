@@ -702,9 +702,6 @@ body.step-2-active {
 }
 
 .step-3 .right-section {
-    --cell-width: 210px;
-    --column-gap: 15px;
-    --extra-padding: 150px;
     position: fixed;
     right: 0;
     top: 130px;
@@ -714,10 +711,8 @@ body.step-2-active {
     padding: 0 20px 0 40px;
     background: #fd8264;
     border-radius: 60px 0 0 60px;
-    width: calc(var(--columns) * var(--cell-width) + (var(--columns) - 1) * var(--column-gap) + var(--extra-padding));
     max-width: 45vw;
     z-index: 1;
-    width: auto;
 }
 
 .step-3 .right-section .directory-grid {
@@ -986,8 +981,7 @@ input[id="radio-3"]:checked ~ .glider {
 
 /* ===== ЖЕСТКАЯ ФИКСАЦИЯ RIGHT-SECTION ДЛЯ ПК ===== */
 @media (min-width: 769px) {
-    .step-2 .right-section,
-    .step-3 .right-section {
+    .step-2 .right-section {
         position: fixed !important;
         right: 0 !important;
         left: auto !important;
@@ -998,11 +992,6 @@ input[id="radio-3"]:checked ~ .glider {
         transform: none !important;
         flex-direction: column !important;
         display: flex !important;
-    }
-
-    .step-2 .right-section {
-        top: 0 !important;
-        bottom: 0 !important;
         background: transparent !important;
         border-radius: 60px 0 0 60px !important;
         padding: 0 30px 0 40px !important;
@@ -1010,15 +999,24 @@ input[id="radio-3"]:checked ~ .glider {
         z-index: 1 !important;
     }
 
-    .step-3 .right-section {
+    html body .step-3.right-section,
+    html body .step-3 .right-section {
+        position: fixed !important;
+        right: 0 !important;
+        left: auto !important;
         top: 130px !important;
         bottom: 0 !important;
+        width: 645px !important;
+        min-width: 645px !important;
+        max-width: 45vw !important;
+        transform: none !important;
+        flex-direction: column !important;
+        display: flex !important;
         background: #fd8264 !important;
         border-radius: 60px 0 0 60px !important;
         padding: 0 20px 0 40px !important;
         overflow: hidden !important;
         z-index: 1 !important;
-        width: auto !important;
     }
 
     .step-2 .right-section::before {
