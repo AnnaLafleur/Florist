@@ -1005,7 +1005,7 @@ input[id="radio-3"]:checked ~ .glider {
         flex-direction: column !important;
         display: flex !important;
         padding: 0 20px 0 40px !important;
-        overflow: hidden !important;
+        overflow: visible !important;
         z-index: 1 !important;
     }
 
