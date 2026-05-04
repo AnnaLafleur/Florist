@@ -833,3 +833,13 @@
         min-height: 350px !important;
     }
 }
+
+/* Скрываем крестики на заполненных цветах в мобильной версии step-2 */
+@media (max-width: 768px) {
+    .step-2 .left-section .close-btn,
+    .step-2 .left-section .close-btn-green,
+    .step-2 .flower-group .close-btn,
+    .step-2 .green-group .close-btn-green {
+        display: none !important;
+    }
+}
