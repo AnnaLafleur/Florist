@@ -1600,6 +1600,12 @@
                     var rightSection = document.querySelector('.step-3 .right-section');
                     if (!rightSection) return;
 
+                    // На мобильной версии не применяем full-height
+                    if (window.innerWidth <= 768) {
+                        rightSection.classList.remove('full-height');
+                        return;
+                    }
+
                     var step3Active = document.querySelector('.step-3.active');
                     if (!step3Active) {
                         rightSection.classList.remove('full-height');
