@@ -832,6 +832,25 @@
         height: 60vh !important;
         min-height: 350px !important;
     }
+
+    /* Исправление залипания hover на сенсорных экранах */
+    @media (hover: none) {
+        button.learn-more-1:hover .circle,
+        button.learn-more-2:hover .circle {
+            width: 3rem !important;
+        }
+
+        button.learn-more-1:hover .circle .icon.arrow,
+        button.learn-more-2:hover .circle .icon.arrow {
+            transform: none !important;
+            background: #fd8262 !important;
+        }
+
+        button.learn-more-1:hover .button-text,
+        button.learn-more-2:hover .button-text {
+            color: #fff !important;
+        }
+    }
 }
 
 /* Скрываем крестики на заполненных цветах в мобильной версии step-2 */
