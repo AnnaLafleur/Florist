@@ -736,3 +736,100 @@
         margin: 0 0 12px 0 !important;
     }
 }
+
+/* ===== ЭТАП 3 — МОБИЛЬНАЯ ВЕРСИЯ ===== */
+@media (max-width: 768px) {
+    /* Левая часть с эллипсом — наверху */
+    .step-3 .left-section {
+        position: relative !important;
+        width: 100% !important;
+        height: 40vh !important;
+        min-height: 250px !important;
+        max-height: 400px !important;
+        top: 0 !important;
+        left: 0 !important;
+        z-index: 1 !important;
+        padding: 50px 20px 20px !important;
+        box-sizing: border-box !important;
+    }
+
+    .step-3 .left-section #ellipse-svg {
+        width: 100% !important;
+        height: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Правая часть с ячейками — под эллипсом */
+    .step-3 .right-section {
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        bottom: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 60vh !important;
+        min-height: 350px !important;
+        flex-shrink: 0 !important;
+        background: #fd8264 !important;
+        border-radius: 30px 30px 0 0 !important;
+        overflow: visible !important;
+        z-index: 10 !important;
+        box-sizing: border-box !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important;
+        padding: 52px 20px 80px !important;
+    }
+
+    .step-3 .right-section::before {
+        display: none !important;
+    }
+
+    /* Вкладки paper/box — над розовым блоком */
+    .step-3 .right-section .tabs-container {
+        position: absolute !important;
+        top: -58px !important;
+        left: 50% !important;
+        transform: translateX(-50%) !important;
+        flex-shrink: 0 !important;
+        margin: 0 !important;
+        z-index: 20 !important;
+    }
+
+    /* Сетка с ячейками */
+    .step-3 .right-section .directory-grid {
+        height: calc(100% - 60px) !important;
+        margin-top: 10px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        overflow-y: auto !important;
+        scrollbar-width: none !important;
+    }
+
+    .step-3 .right-section .directory-grid::-webkit-scrollbar {
+        display: none !important;
+    }
+
+    /* Ячейки */
+    .step-3 .right-section .directory-item {
+        flex-shrink: 0 !important;
+        scroll-snap-align: start !important;
+        width: 240px !important;
+        min-width: 240px !important;
+        max-width: 240px !important;
+        height: 230px !important;
+        min-height: 230px !important;
+        margin: 0 !important;
+    }
+
+    .step-3 .right-section .directory-item .item-content {
+        height: 230px !important;
+    }
+
+    /* full-height не нужен на мобильной версии */
+    .step-3 .right-section.full-height {
+        height: 60vh !important;
+        min-height: 350px !important;
+    }
+}
