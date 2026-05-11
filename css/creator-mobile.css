@@ -780,6 +780,7 @@
         flex-direction: column !important;
         justify-content: flex-start !important;
         padding: 52px 20px 80px !important;
+        pointer-events: auto !important;
     }
 
     .step-3 .right-section::before {
@@ -799,12 +800,19 @@
 
     /* Сетка с ячейками */
     .step-3 .right-section .directory-grid {
-        height: calc(100% - 60px) !important;
+        height: 100% !important;
+        flex: 1 !important;
         margin-top: 10px !important;
         padding-left: 10px !important;
         padding-right: 10px !important;
         overflow-y: auto !important;
+        overflow-x: hidden !important;
         scrollbar-width: none !important;
+        pointer-events: auto !important;
+        touch-action: pan-y !important;
+        -webkit-overflow-scrolling: touch !important;
+        position: relative !important;
+        z-index: 30 !important;
     }
 
     .step-3 .right-section .directory-grid::-webkit-scrollbar {
@@ -821,10 +829,16 @@
         height: 230px !important;
         min-height: 230px !important;
         margin: 0 !important;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        touch-action: manipulation !important;
     }
 
     .step-3 .right-section .directory-item .item-content {
         height: 230px !important;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        touch-action: manipulation !important;
     }
 
     /* full-height не нужен на мобильной версии */
