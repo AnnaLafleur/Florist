@@ -8,33 +8,22 @@ document.addEventListener('DOMContentLoaded', function() {
         svgEllipse.style.height = 'auto';
     }
 
-    // Preload paper/box/tape images - use fetch for immediate load
+// Preload paper/box/tape images silently (Image() doesn't log errors to console)
     (function preloadPaperImages() {
-        const shapes = ['circle', 'square', 'rectangle'];
+        const CDN = "https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/";
         const nums = ['0001', '0002', '0003', '0004', '0005'];
         const colors = ['white', 'red', 'pink', 'orange', 'yellow'];
-        const tapeColors = ['white', 'red', 'pink', 'orange'];
 
-        const preload = (src) => {
-            fetch(src, { mode: 'cors', cache: 'force-cache' }).catch(() => {});
-        };
-
-        shapes.forEach(shape => {
-            nums.forEach(num => {
-                colors.forEach(color => {
-                    preload(`https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/print/box/${shape}/${num}/${color}.png`);
-                });
-            });
-        });
+        const preload = (src) => { const img = new Image(); img.src = src; };
 
         nums.forEach(num => {
-            colors.forEach(color => {
-                preload(`https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/paper1/${num}/${color}.png`);
-                preload(`https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/paper2/${num}/${color}.png`);
-            });
-            tapeColors.forEach(color => {
-                preload(`https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/tape/${color}.png`);
-            });
+            if (num <= '0003') {
+                colors.forEach(color => {
+                    preload(`${CDN}img/texture/paper1/${num}/${color}.png`);
+                    preload(`${CDN}img/texture/paper2/${num}/${color}.png`);
+                });
+            }
+            preload(`${CDN}img/texture/tape/white.png`);
         });
     })();
 
