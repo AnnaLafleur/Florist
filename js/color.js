@@ -455,13 +455,11 @@ document.addEventListener('DOMContentLoaded', function() {
                             animation.playAnimation(40);
                         };
                         spriteImg.onerror = function() {
-                            console.error('Failed to load sprite:', animation.sprite);
                             imgElement.src = animation.firstFrame;
                             imgElement.style.opacity = '1';
                         };
                     };
                     testImage.onerror = function() {
-                        console.error('Failed to load image:', `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/${flowerName}/${newColor}/0001.png`);
                         imgElement.src = animation.firstFrame;
                         imgElement.style.opacity = '1';
                     };
