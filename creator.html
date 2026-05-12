@@ -1688,77 +1688,45 @@
         <script>
             function updateCellZoomForMobile() {
                 if (window.innerWidth > 768) return;
+                if (!document.querySelector('.step-2.active')) return;
 
-                const activeStep2 = document.querySelector('.step-2.active');
-                const activeStep3 = document.querySelector('.step-3.active');
+                const rightSection = document.querySelector('.step-2 .right-section');
+                const grid = document.querySelector('.step-2 .right-section .directory-grid');
+                const colorIconContainer = document.querySelector('.step-2 .color-icon-container');
+                if (!rightSection || !grid) return;
 
-                if (!activeStep2 && !activeStep3) return;
+                // Force layout recalc
+                rightSection.offsetHeight;
 
+                const rightSectionRect = rightSection.getBoundingClientRect();
+                const cs = getComputedStyle(rightSection);
+                const paddingTop = parseFloat(cs.paddingTop) || 0;
+                const paddingBottom = parseFloat(cs.paddingBottom) || 0;
+
+                // Content zone inside padding
+                const contentHeight = rightSectionRect.height - paddingTop - paddingBottom;
+
+                const colorIconRect = colorIconContainer ? colorIconContainer.getBoundingClientRect() : { height: 0 };
                 const gap = 10;
+                const colorIconMarginBottom = colorIconContainer ? (parseFloat(getComputedStyle(colorIconContainer).marginBottom) || 15) : 0;
+                const colorIconHeight = colorIconRect.height;
+
+                // Available height for the grid (inside content zone, below color icons)
+                const availableForGrid = contentHeight - colorIconHeight - (colorIconHeight > 0 ? colorIconMarginBottom : 0);
+
+                if (availableForGrid < 60) return;
+
+                // zoom so that exactly 2 rows of cells (CELL_BASE_HEIGHT each) + 1 gap fit in availableForGrid
+                // Layout: 2 * CELL_BASE_HEIGHT * zoom + gap = availableForGrid
                 const CELL_BASE_HEIGHT = 230;
+                const zoom = Math.max(0.3, Math.min(1, (availableForGrid - gap) / (2 * CELL_BASE_HEIGHT)));
 
-                if (activeStep2) {
-                    const rightSection = document.querySelector('.step-2 .right-section');
-                    const grid = document.querySelector('.step-2 .right-section .directory-grid');
-                    const colorIconContainer = document.querySelector('.step-2 .color-icon-container');
-                    if (!rightSection || !grid) return;
+                // Grid height = actual layout height of 2 zoomed rows + gap between them
+                const gridLayoutHeight = 2 * CELL_BASE_HEIGHT * zoom + gap;
 
-                    rightSection.offsetHeight;
-
-                    const rightSectionRect = rightSection.getBoundingClientRect();
-                    const cs = getComputedStyle(rightSection);
-                    const paddingTop = parseFloat(cs.paddingTop) || 0;
-                    const paddingBottom = parseFloat(cs.paddingBottom) || 0;
-
-                    // Content zone inside padding
-                    const contentHeight = rightSectionRect.height - paddingTop - paddingBottom;
-
-                    const colorIconRect = colorIconContainer ? colorIconContainer.getBoundingClientRect() : { height: 0 };
-                    const colorIconHeight = colorIconRect.height;
-                    const colorIconMarginBottom = colorIconContainer ? (parseFloat(getComputedStyle(colorIconContainer).marginBottom) || 15) : 0;
-                    const availableForGrid = contentHeight - colorIconHeight - (colorIconHeight > 0 ? colorIconMarginBottom : 0);
-
-                    if (availableForGrid < 60) return;
-
-                    // zoom so that exactly 2 rows of cells (CELL_BASE_HEIGHT each) + 1 gap fit in availableForGrid
-                    // Layout: 2 * CELL_BASE_HEIGHT * zoom + gap = availableForGrid
-                    const zoom = Math.max(0.3, Math.min(1, (availableForGrid - gap) / (2 * CELL_BASE_HEIGHT)));
-                    const gridLayoutHeight = 2 * CELL_BASE_HEIGHT * zoom + gap;
-                    const cellHeight = Math.round(CELL_BASE_HEIGHT * zoom);
-
-                    document.documentElement.style.setProperty('--cell-zoom', zoom);
-                    document.documentElement.style.setProperty('--cell-height', cellHeight + 'px');
-                    document.documentElement.style.setProperty('--icon-zoom', Math.max(0.3, zoom * 0.65 / 0.55));
-                    grid.style.setProperty('--grid-height', gridLayoutHeight + 'px');
-                }
-
-                if (activeStep3) {
-                    const rightSection = document.querySelector('.step-3 .right-section');
-                    const grid = document.querySelector('.step-3 .right-section .directory-grid');
-                    if (!rightSection || !grid) return;
-
-                    rightSection.offsetHeight;
-
-                    const rightSectionRect = rightSection.getBoundingClientRect();
-                    const cs = getComputedStyle(rightSection);
-                    const paddingTop = parseFloat(cs.paddingTop) || 0;
-                    const paddingBottom = parseFloat(cs.paddingBottom) || 0;
-                    const contentHeight = rightSectionRect.height - paddingTop - paddingBottom;
-
-                    const availableForGrid = contentHeight;
-
-                    if (availableForGrid < 60) return;
-
-                    // zoom so that exactly 2 rows of cells (CELL_BASE_HEIGHT each) + 1 gap fit in availableForGrid
-                    // Layout: 2 * CELL_BASE_HEIGHT * zoom + gap = availableForGrid
-                    const zoom = Math.max(0.3, Math.min(1, (availableForGrid - gap) / (2 * CELL_BASE_HEIGHT)));
-                    const gridLayoutHeight = 2 * CELL_BASE_HEIGHT * zoom + gap;
-                    const cellHeight = Math.round(CELL_BASE_HEIGHT * zoom);
-
-                    document.documentElement.style.setProperty('--cell-zoom', zoom);
-                    document.documentElement.style.setProperty('--cell-height', cellHeight + 'px');
-                    grid.style.setProperty('--grid-height', gridLayoutHeight + 'px');
-                }
+                document.documentElement.style.setProperty('--cell-zoom', zoom);
+                document.documentElement.style.setProperty('--icon-zoom', Math.max(0.3, zoom * 0.65 / 0.55));
+                grid.style.setProperty('--grid-height', gridLayoutHeight + 'px');
             }
 
             document.addEventListener('DOMContentLoaded', function() {
