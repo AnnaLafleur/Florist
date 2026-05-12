@@ -8,14 +8,16 @@ document.addEventListener('DOMContentLoaded', function() {
         svgEllipse.style.height = 'auto';
     }
 
-    // Preload paper/box/tape images
+    // Preload paper/box/tape images - use fetch for immediate load
     (function preloadPaperImages() {
         const shapes = ['circle', 'square', 'rectangle'];
-        const nums = ['0001', '0002', '0003', '0004', '0005', '0006', '0007', '0008', '0009', '0010'];
-        const colors = ['white', 'red', 'pink', 'orange', 'yellow', 'purple', 'blue', 'green', 'brown'];
-        const tapeColors = ['white', 'red', 'pink', 'orange', 'yellow', 'purple', 'blue', 'green'];
+        const nums = ['0001', '0002', '0003', '0004', '0005'];
+        const colors = ['white', 'red', 'pink', 'orange', 'yellow'];
+        const tapeColors = ['white', 'red', 'pink', 'orange'];
 
-        const preload = (src) => { const img = new Image(); img.src = src; };
+        const preload = (src) => {
+            fetch(src, { mode: 'cors', cache: 'force-cache' }).catch(() => {});
+        };
 
         shapes.forEach(shape => {
             nums.forEach(num => {
