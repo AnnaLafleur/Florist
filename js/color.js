@@ -439,7 +439,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     const numMatch = textureName.match(/(\d+)$/);
                     const textureNum = numMatch ? numMatch[1].padStart(4, '0') : '0001';
                     const folder = textureName.startsWith('print') ? 'print' : 'texture';
-                    imgElement.src = `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/${folder}/cell/${textureNum}/${newColor}.jpg`;
+                    const newSrc = `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/${folder}/cell/${textureNum}/${newColor}.jpg`;
+                    if (imgElement.src !== newSrc) {
+                        imgElement.src = newSrc;
+                    }
                     imgElement.style.opacity = '1';
                 } else {
                     const flowerName = item.dataset.flowerName;
@@ -661,6 +664,39 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelectorAll('.step-2 .directory-item, .step-3 .directory-item').forEach(item => {
             syncInitialColor(item);
         });
+
+        // Preload all color variations for step-3 items
+        const step3Items = document.querySelectorAll('.step-3 .directory-item');
+        if (step3Items.length > 0) {
+            const colors = ['white', 'red', 'pink', 'orange', 'yellow', 'purple', 'blue', 'green', 'brown'];
+            const textureItems = document.querySelectorAll('.step-3 .directory-grid[data-type="texture"] .directory-item');
+            const printItems = document.querySelectorAll('.step-3 .directory-grid[data-type="print"] .directory-item');
+
+            const preloadImage = (src) => {
+                const img = new Image();
+                img.src = src;
+            };
+
+            // Preload textures
+            textureItems.forEach(item => {
+                const textureName = item.dataset.textureName || '';
+                const numMatch = textureName.match(/(\d+)$/);
+                const textureNum = numMatch ? numMatch[1].padStart(4, '0') : '0001';
+                colors.forEach(color => {
+                    preloadImage(`https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/cell/${textureNum}/${color}.jpg`);
+                });
+            });
+
+            // Preload prints
+            printItems.forEach(item => {
+                const printName = item.dataset.textureName || '';
+                const numMatch = printName.match(/(\d+)$/);
+                const printNum = numMatch ? numMatch[1].padStart(4, '0') : '0001';
+                colors.forEach(color => {
+                    preloadImage(`https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/print/cell/${printNum}/${color}.jpg`);
+                });
+            });
+        }
 
         if (document.querySelector('.step-2.active, .step-3.active')) {
             updateBackgroundWidth();
