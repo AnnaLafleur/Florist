@@ -8,24 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
         svgEllipse.style.height = 'auto';
     }
 
-// Preload paper/box/tape images silently (Image() doesn't log errors to console)
-    (function preloadPaperImages() {
-        const CDN = "https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/";
-        const nums = ['0001', '0002', '0003', '0004', '0005'];
-        const colors = ['white', 'red', 'pink', 'orange', 'yellow'];
 
-        const preload = (src) => { const img = new Image(); img.src = src; };
-
-        nums.forEach(num => {
-            if (num <= '0003') {
-                colors.forEach(color => {
-                    preload(`${CDN}img/texture/paper1/${num}/${color}.png`);
-                    preload(`${CDN}img/texture/paper2/${num}/${color}.png`);
-                });
-            }
-            preload(`${CDN}img/texture/tape/white.png`);
-        });
-    })();
 
     const unitRadius = 30;
     const perspectiveScale = 0.58;
