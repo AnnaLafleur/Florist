@@ -282,9 +282,10 @@ document.addEventListener('DOMContentLoaded', function() {
             const textureNum = numMatch ? numMatch[1].padStart(4, '0') : '0001';
             const folder = textureName.startsWith('print') ? 'print' : 'texture';
             const newSrc = `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/${folder}/cell/${textureNum}/${initialColor}.jpg`;
-            // Only update if src is different to avoid unnecessary network requests
             if (imgElement.src !== newSrc) {
-                imgElement.src = newSrc;
+                fetch(newSrc, { method: 'HEAD' }).then(r => {
+                    if (r.ok) imgElement.src = newSrc;
+                }).catch(() => { imgElement.src = newSrc; });
             }
             imgElement.style.opacity = '1';
             return;
@@ -441,7 +442,9 @@ document.addEventListener('DOMContentLoaded', function() {
                     const folder = textureName.startsWith('print') ? 'print' : 'texture';
                     const newSrc = `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/${folder}/cell/${textureNum}/${newColor}.jpg`;
                     if (imgElement.src !== newSrc) {
-                        imgElement.src = newSrc;
+                        fetch(newSrc, { method: 'HEAD' }).then(r => {
+                            if (r.ok) imgElement.src = newSrc;
+                        }).catch(() => { imgElement.src = newSrc; });
                     }
                     imgElement.style.opacity = '1';
                 } else {
