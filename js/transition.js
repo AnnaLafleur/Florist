@@ -53,8 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createPageClone(html, page) {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(html, 'text/html');
+        let doc;
+        try {
+            const parser = new DOMParser();
+            doc = parser.parseFromString(html, 'text/html');
+        } catch (e) {
+            doc = document.implementation.createHTMLDocument('');
+            doc.documentElement.innerHTML = html;
+        }
 
         const scripts = doc.querySelectorAll('script');
         scripts.forEach(script => script.remove());
@@ -176,13 +182,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         if (cloneHtml) {
-            shadowRoot.innerHTML = cloneHtml;
+            try {
+                shadowRoot.innerHTML = cloneHtml;
+            } catch (e) {
+                /* file:// security restriction - clone visuals not critical */
+            }
             pageCloneContainer.style.display = 'block';
             setTimeout(() => {
                 pageCloneContainer.style.opacity = '1';
             }, 10);
         } else {
-            shadowRoot.innerHTML = '';
+            try {
+                shadowRoot.innerHTML = '';
+            } catch (e) {
+                /* file:// security restriction */
+            }
             pageCloneContainer.style.display = 'block';
             setTimeout(() => {
                 pageCloneContainer.style.opacity = '1';
@@ -193,8 +207,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function hidePageClone() {
         pageCloneContainer.style.opacity = '0';
         setTimeout(() => {
+            try {
+                shadowRoot.innerHTML = '';
+            } catch (e) {
+                /* file:// security restriction */
+            }
             pageCloneContainer.style.display = 'none';
-            shadowRoot.innerHTML = '';
             pageCloneContainer.style.overflowY = 'hidden';
             pageCloneContainer.style.transform = '';
             document.body.style.overflow = '';
