@@ -8,6 +8,34 @@ document.addEventListener('DOMContentLoaded', function() {
         svgEllipse.style.height = 'auto';
     }
 
+    // Preload paper/box/tape images
+    (function preloadPaperImages() {
+        const shapes = ['circle', 'square', 'rectangle'];
+        const nums = ['0001', '0002', '0003', '0004', '0005', '0006', '0007', '0008', '0009', '0010'];
+        const colors = ['white', 'red', 'pink', 'orange', 'yellow', 'purple', 'blue', 'green', 'brown'];
+        const tapeColors = ['white', 'red', 'pink', 'orange', 'yellow', 'purple', 'blue', 'green'];
+
+        const preload = (src) => { const img = new Image(); img.src = src; };
+
+        shapes.forEach(shape => {
+            nums.forEach(num => {
+                colors.forEach(color => {
+                    preload(`https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/print/box/${shape}/${num}/${color}.png`);
+                });
+            });
+        });
+
+        nums.forEach(num => {
+            colors.forEach(color => {
+                preload(`https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/paper1/${num}/${color}.png`);
+                preload(`https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/paper2/${num}/${color}.png`);
+            });
+            tapeColors.forEach(color => {
+                preload(`https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/texture/tape/${color}.png`);
+            });
+        });
+    })();
+
     const unitRadius = 30;
     const perspectiveScale = 0.58;
     const margin = 20;
