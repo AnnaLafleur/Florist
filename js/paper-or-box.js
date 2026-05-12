@@ -533,7 +533,7 @@ document.addEventListener('DOMContentLoaded', function() {
             initializeCellIds();
             updateCellSelection();
             if (window.showColorIconsForSelected) window.showColorIconsForSelected();
-            if (window.updatePositions) window.updatePositions('prints');
+            if (window.updatePositions) requestAnimationFrame(() => window.updatePositions('prints'));
             return;
         }
 
@@ -666,7 +666,7 @@ document.addEventListener('DOMContentLoaded', function() {
             updateBackgroundWidth();
 
             if (window.updatePositions && (boxRadio.checked || selectedShape !== 'form-circle')) {
-                window.updatePositions('prints');
+                requestAnimationFrame(() => window.updatePositions('prints'));
             }
         });
     });
@@ -918,7 +918,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             if (window.updatePositions) {
-                window.updatePositions('prints');
+                requestAnimationFrame(() => window.updatePositions('prints'));
             }
         } else {
             handlePrintItemClick(event, printGrid, 'print');
@@ -952,7 +952,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             if (window.updatePositions) {
-                window.updatePositions('step3');
+                requestAnimationFrame(() => window.updatePositions('step3'));
             }
         } else {
             handleTextureItemClick(event, textureGrid);
@@ -975,7 +975,9 @@ document.addEventListener('DOMContentLoaded', function() {
             scrollPositions[currentPaperButton] = textureGrid.scrollTop;
         }
         toggleGrids(false);
-        if (window.updatePositions) window.updatePositions('prints');
+        if (window.updatePositions) {
+            requestAnimationFrame(() => window.updatePositions('prints'));
+        }
     });
 
     paperRadio.addEventListener('change', () => {
@@ -983,7 +985,9 @@ document.addEventListener('DOMContentLoaded', function() {
             window.hideColorIconsImmediately();
         }
         toggleGrids(true);
-        if (window.updatePositions) window.updatePositions('step3');
+        if (window.updatePositions) {
+            requestAnimationFrame(() => window.updatePositions('step3'));
+        }
     });
 
     // Обработчики для перехода между шагами
