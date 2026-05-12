@@ -602,6 +602,9 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function(e) {
         if (!document.querySelector('.step-2.active, .step-3.active')) {
             hideColorIconsImmediately();
+            // Reset sync flag when leaving step-3
+            const step3Grid = document.querySelector('.step-3 .directory-grid');
+            if (step3Grid) step3Grid.dataset.synced = '';
             return;
         }
 
@@ -623,9 +626,14 @@ document.addEventListener('DOMContentLoaded', function() {
         const stepClass = activeStep.classList.contains('step-2') ? '.step-2.active' : '.step-3.active';
 
         if (activeStep.classList.contains('step-3')) {
-            document.querySelectorAll('.step-3 .directory-item').forEach(item => {
-                syncInitialColor(item);
-            });
+            // Only sync once - check if already synced to avoid re-processing all items
+            const step3Grid = document.querySelector('.step-3 .directory-grid');
+            if (step3Grid && !step3Grid.dataset.synced) {
+                document.querySelectorAll('.step-3 .directory-item').forEach(item => {
+                    syncInitialColor(item);
+                });
+                step3Grid.dataset.synced = 'true';
+            }
         }
 
         const selectedContent = document.querySelector(`${stepClass} .item-content.selected`);
