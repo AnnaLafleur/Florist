@@ -9,13 +9,9 @@ class FlowerAnimation {
         const parent = this.img ? this.img.closest('.directory-item') : null;
         this.color = parent?.dataset.currentColor || 'white';
         this.sprite = `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/${flowerName}/${this.color}.png`;
-        this.firstFrame = `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/${flowerName}/${this.color}/0001.png`;
-        this.isPlaying = false;
-        this.canvas = null;
-        this.ctx = null;
         this.spriteImg = new Image();
-        this.spriteImg.src = this.sprite;
-        this.spriteImg.onerror = () => { /* Sprite not available - normal for some colors */ };
+        // spriteImg.src intentionally not set here — avoids CORB for non-existent sprites
+        this.firstFrame = `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/${flowerName}/${this.color}/0001.png`;
         this.frameWidth = 1024;
         this.frameHeight = 1024;
         this.frameCount = 30;
@@ -243,6 +239,10 @@ class FlowerAnimation {
 
             requestAnimationFrame(animate);
         };
+
+        if (!this.spriteImg.src) {
+            this.spriteImg.src = this.sprite;
+        }
 
         if (!this.spriteImg.complete) {
             createCanvas();
