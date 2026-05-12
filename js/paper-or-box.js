@@ -144,6 +144,10 @@ document.addEventListener('DOMContentLoaded', function() {
         window.state.prints.selectedPrintId = item.dataset.id || item.dataset.index || '0';
 
         window.saveStateToLocalStorage('prints');
+
+        // Force immediate SVG update
+        if (window.updatePaperHrefs) window.updatePaperHrefs();
+        if (window.drawEllipse) window.drawEllipse();
     }
 
     // Обработчик кликов для элементов texture
@@ -188,6 +192,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         window.saveStateToLocalStorage('step3');
+
+        // Force immediate SVG update
+        if (window.updatePaperHrefs) window.updatePaperHrefs();
+        if (window.drawEllipse) window.drawEllipse();
     }
 
     // Добавляем обработчики на сами элементы
