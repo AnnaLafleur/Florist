@@ -281,7 +281,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const numMatch = textureName.match(/(\d+)$/);
             const textureNum = numMatch ? numMatch[1].padStart(4, '0') : '0001';
             const folder = textureName.startsWith('print') ? 'print' : 'texture';
-            imgElement.src = `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/${folder}/cell/${textureNum}/${initialColor}.jpg`;
+            const newSrc = `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/${folder}/cell/${textureNum}/${initialColor}.jpg`;
+            // Only update if src is different to avoid unnecessary network requests
+            if (imgElement.src !== newSrc) {
+                imgElement.src = newSrc;
+            }
             imgElement.style.opacity = '1';
             return;
         }
@@ -293,11 +297,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const testImg = new Image();
         testImg.src = firstFrameUrl;
         testImg.onload = () => {
-            imgElement.src = firstFrameUrl;
+            if (imgElement.src !== firstFrameUrl) {
+                imgElement.src = firstFrameUrl;
+            }
             imgElement.style.opacity = '1';
         };
         testImg.onerror = () => {
-            imgElement.src = `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/${flowerName}/white/0001.png`;
+            const fallback = `https://cdn.jsdelivr.net/gh/AnnaLafleur/Florist@main/img/animation/${flowerName}/white/0001.png`;
+            if (imgElement.src !== fallback) {
+                imgElement.src = fallback;
+            }
             imgElement.style.opacity = '1';
         };
     }
