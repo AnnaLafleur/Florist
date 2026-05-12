@@ -15,6 +15,7 @@ class FlowerAnimation {
         this.ctx = null;
         this.spriteImg = new Image();
         this.spriteImg.src = this.sprite;
+        this.spriteImg.onerror = () => { /* Sprite not available - normal for some colors */ };
         this.frameWidth = 1024;
         this.frameHeight = 1024;
         this.frameCount = 30;
